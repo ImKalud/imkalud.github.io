@@ -15,9 +15,24 @@
 <body class="theme">
     <div class="welcome-container">
         <img src="/resource/logo.png" alt="QQ头像">
-        <h1>ImKalud</h1>
-        <button class="button enter-button" onclick="window.location.href='website/home.html'">进入博客</button>
+        <h1 id="Title">加载失败</h1>
+        <button class="button enter-button" id="MainButton">加载失败</button>
     </div>
+    <script>
+        if (deid) {
+            document.getElementById("Title").innerText = 'ImKalud 已死亡!'
+            document.getElementById("MainButton").innerText = '进入灵堂'
+            document.getElementById("MainButton").onclick = function () {
+                window.location.href = 'website/lingtang/index.html'
+            };
+        } else {
+            document.getElementById("Title").innerText = 'ImKalud'
+            document.getElementById("MainButton").textContent = '进入博客'
+            document.getElementById("MainButton").onclick = function () {
+                window.location.href = 'website/home.html'
+            };
+        }
+    </script>
 </body>
 
 </html>
