@@ -71,7 +71,7 @@ h2 {
   color: #fff;
 }
 
-.tin{
+.tin {
   font-size: 2rem;
 }
 
@@ -123,11 +123,12 @@ img {
   main {
     max-width: 80%;
   }
+
   img {
     max-width: 80%;
   }
+
   .link {
     max-width: 80%;
   }
 }
-
