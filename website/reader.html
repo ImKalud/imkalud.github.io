@@ -7,49 +7,49 @@
     <title>文章</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/reader.css">
-    <link rel="icon" href="../resource/icon.png" sizes="16x16" />
+    <link rel="icon" href="../resource/image/icon.png" sizes="16x16"/>
     <script src="../javascript/marked.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="article.html">返回</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <li><a href="article.html">返回</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <div id="title"></div>
-        <div id="content"></div>
-        <script>
-            const currentTitle = localStorage.getItem('currentArticleTitle');
-            if (currentTitle) {
-                const txtTitle = localStorage.getItem(`article-${currentTitle}-title`);
-                const txtTime = localStorage.getItem(`article-${currentTitle}-time`);
-                const txtContent = localStorage.getItem(`article-${currentTitle}-content`);
-                const afterMD = marked.parse(txtContent);
-                const displayTitle = txtTitle || '加载文章标题出错!';
-                const displayTime = txtTime || '加载文章日期出错!';
-                const displayContent = afterMD || '加载文章内容出错!';
-                const text = `${displayTitle} - ${displayTime}`;
-                document.getElementById('title').textContent = displayTitle;
-                document.getElementById('content').innerHTML = displayContent;
-            } else {
-                document.getElementById('title').textContent = '没有找到该文章';
-                document.getElementById('content').textContent = '文章内容加载失败';
-            }
+<main>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        const currentTitle = localStorage.getItem('currentArticleTitle');
+        if (currentTitle) {
+            const txtTitle = localStorage.getItem(`article-${currentTitle}-title`);
+            const txtTime = localStorage.getItem(`article-${currentTitle}-time`);
+            const txtContent = localStorage.getItem(`article-${currentTitle}-content`);
+            const afterMD = marked.parse(txtContent);
+            const displayTitle = txtTitle || '加载文章标题出错!';
+            const displayTime = txtTime || '加载文章日期出错!';
+            const displayContent = afterMD || '加载文章内容出错!';
+            const text = `${displayTitle} - ${displayTime}`;
+            document.getElementById('title').textContent = displayTitle;
+            document.getElementById('content').innerHTML = displayContent;
+        } else {
+            document.getElementById('title').textContent = '没有找到该文章';
+            document.getElementById('content').textContent = '文章内容加载失败';
+        }
 
-            document.getElementById('title').classList.add('articleTitle');
-            document.getElementById('content').classList.add('articleContent');
-        </script>
-    </main>
+        document.getElementById('title').classList.add('articleTitle');
+        document.getElementById('content').classList.add('articleContent');
+    </script>
+</main>
 
-    <footer>
-        <p>&copy; 2025 ImKalud ❤</p>
-    </footer>
-    <script src="../javascript/article.js"></script>
+<footer>
+    <p>&copy; 2025 ImKalud ❤</p>
+</footer>
+<script src="../javascript/article.js"></script>
 </body>
 
 </html>

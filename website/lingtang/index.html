@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-<html>
-
 <head>
     <meta charset="UTF-8">
 
@@ -28,7 +26,7 @@
     <script src="../../javascript/lottie.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <link rel="icon" href="../../resource/icon.png" sizes="16x16" />
+    <link rel="icon" href="../../resource/image/icon.png" sizes="16x16"/>
     <style>
         body {
             background-color: #333;
@@ -322,89 +320,89 @@
 </head>
 
 <body>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <div class="container">
-        <div class="page-header">
-            <h1 class="title" id="title">JavaScript required.</h1>
-            <div id="RenShengZiGu">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div id="Sheiwusi">人生自古谁无死？不幸的，<span
-                                        style="margin:.0em .2em .0em .2em; padding: .0em .2em .0em .2em; border-radius: 5px; border: thin solid; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial;"
-                                        data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
-                                        data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left=""><b
-                                            id="dead_nameInSheiwusi"></b></span>已经逝世，因此无法继续与您互动，让我们永远缅怀它。<a
-                                        href="https://github.com/ASOULFucker/Lingtang_OnInternet/">开源链接</a></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- 分割线后 主体 -->
-        <div id="LingTang">
-            <img alt="逝者照片" class="Dead_Picture_Light" id="Dead_Picture">
-            <img alt="灵堂相框" src="../../resource/logo.png" id="Picture_Border">
-            <div style="position: absolute;">
-                <div id="Champagne"></div>
-            </div>
-            <h3 id="big_name">未启用 JavaScript。</h3>
-            <p id="life_introduction">未启用 JavaScript。</p>
-            <hr />
-            <h4 id="Gongpin">给 [] 送上贡品</h4>
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default" id="OpenChampagne">开香槟🍾</button>
-            </div>
-            <hr />
-            <h4>留下致辞</h4>
-            <div id="gitalk-container"></div>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<div class="container">
+    <div class="page-header">
+        <h1 class="title" id="title">JavaScript required.</h1>
+        <div id="RenShengZiGu">
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        <div id="Sheiwusi">人生自古谁无死？不幸的，<span
+                                style="margin:.0em .2em .0em .2em; padding: .0em .2em .0em .2em; border-radius: 5px; border: thin solid; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial;"
+                                data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left=""><b
+                                id="dead_nameInSheiwusi"></b></span>已经逝世，因此无法继续与您互动，让我们永远缅怀它。<a
+                                href="https://github.com/ASOULFucker/Lingtang_OnInternet/">开源链接</a></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <div id="loading">
-        <p class="loading_text" id="loading_tips">你是不是没开 JavaScript？</p>
-        <p class="loading_text" id="dot_loading_1">.</p>
-        <p class="loading_text" id="dot_loading_2">.</p>
-        <p class="loading_text" id="dot_loading_3">.</p>
+    <!-- 分割线后 主体 -->
+    <div id="LingTang">
+        <img alt="逝者照片" class="Dead_Picture_Light" id="Dead_Picture">
+        <img alt="灵堂相框" src="../../resource/image/logo.png" id="Picture_Border">
+        <div style="position: absolute;">
+            <div id="Champagne"></div>
+        </div>
+        <h3 id="big_name">未启用 JavaScript。</h3>
+        <p id="life_introduction">未启用 JavaScript。</p>
+        <hr/>
+        <h4 id="Gongpin">给 [] 送上贡品</h4>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" id="OpenChampagne">开香槟🍾</button>
+        </div>
+        <hr/>
+        <h4>留下致辞</h4>
+        <div id="gitalk-container"></div>
     </div>
+</div>
 
-    <!-- 电子灵堂 主程序 -->
-    <script>
-        document.title = name + " 的电子灵堂";
-        document.getElementById("title").innerHTML = name + " 的电子灵堂";
-        document.getElementById("dead_nameInSheiwusi").innerHTML = name;
-        document.getElementById("Dead_Picture").src = picture;
-        document.getElementById("big_name").innerHTML = name;
-        document.getElementById("life_introduction").innerHTML = introduction;
-        document.getElementById("Gongpin").innerHTML = "给 " + name + " 送上贡品";
-        document.getElementById("loading_tips").innerHTML = "马上就好";
+<div id="loading">
+    <p class="loading_text" id="loading_tips">你是不是没开 JavaScript？</p>
+    <p class="loading_text" id="dot_loading_1">.</p>
+    <p class="loading_text" id="dot_loading_2">.</p>
+    <p class="loading_text" id="dot_loading_3">.</p>
+</div>
 
-        /* Gitalk 评论区配置 */
-        var gitalk = new Gitalk({
-            clientID: 'Ov23likUboiBUxQBAJ3u',
-            clientSecret: 'd65c25ec41ab2a0ae0ba224e585245a47f6197ff',
-            repo: 'imkalud.github.io',
-            owner: 'ImKalud',
-            admin: ['ImKalud'],
-            id: location.pathname,      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
+<!-- 电子灵堂 主程序 -->
+<script>
+    document.title = name + " 的电子灵堂";
+    document.getElementById("title").innerHTML = name + " 的电子灵堂";
+    document.getElementById("dead_nameInSheiwusi").innerHTML = name;
+    document.getElementById("Dead_Picture").src = picture;
+    document.getElementById("big_name").innerHTML = name;
+    document.getElementById("life_introduction").innerHTML = introduction;
+    document.getElementById("Gongpin").innerHTML = "给 " + name + " 送上贡品";
+    document.getElementById("loading_tips").innerHTML = "马上就好";
+
+    /* Gitalk 评论区配置 */
+    var gitalk = new Gitalk({
+        clientID: 'Ov23likUboiBUxQBAJ3u',
+        clientSecret: 'd65c25ec41ab2a0ae0ba224e585245a47f6197ff',
+        repo: 'imkalud.github.io',
+        owner: 'ImKalud',
+        admin: ['ImKalud'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+    document.getElementById("OpenChampagne").onclick = function () {
+        lottie.loadAnimation({
+            container: Champagne, // 容器节点
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '../../resource/champagne.json' // JSON文件路径
         });
-        gitalk.render('gitalk-container');
-        document.getElementById("OpenChampagne").onclick = function () {
-            lottie.loadAnimation({
-                container: Champagne, // 容器节点
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: '../../resource/champagne.json' // JSON文件路径
-            });
-        };
-        $('#loading').addClass('disappear');
-        console.log("Main done.")
-    </script>
+    };
+    $('#loading').addClass('disappear');
+    console.log("Main done.")
+</script>
 </body>
 
 </html>

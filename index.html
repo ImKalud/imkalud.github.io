@@ -9,30 +9,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalud的博客</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" href="resource/icon.png" sizes="16x16" />
+    <link rel="icon" href="resource/image/icon.png" sizes="16x16"/>
 </head>
 
 <body class="theme">
-    <div class="welcome-container">
-        <img src="/resource/logo.png" alt="QQ头像">
-        <h1 id="Title">加载失败</h1>
-        <button class="button enter-button" id="MainButton">加载失败</button>
-    </div>
-    <script>
-        if (deid) {
-            document.getElementById("Title").innerText = 'ImKalud 已死亡!'
-            document.getElementById("MainButton").innerText = '进入灵堂'
-            document.getElementById("MainButton").onclick = function () {
-                window.location.href = 'website/lingtang/index.html'
-            };
-        } else {
-            document.getElementById("Title").innerText = 'ImKalud'
-            document.getElementById("MainButton").textContent = '进入博客'
-            document.getElementById("MainButton").onclick = function () {
-                window.location.href = 'website/home.html'
-            };
-        }
-    </script>
+<div class="welcome-container">
+    <img src="/resource/image/logo.png" alt="QQ头像">
+    <h1 id="Title">加载失败</h1>
+    <button class="button enter-button" id="MainButton">加载失败</button>
+</div>
+<script>
+    if (deid) {
+        document.getElementById("Title").innerText = 'ImKalud 已死亡!'
+        document.getElementById("MainButton").innerText = '进入灵堂'
+        document.getElementById("MainButton").onclick = function () {
+            window.location.href = 'website/lingtang/index.html'
+        };
+    } else {
+        document.getElementById("Title").innerText = 'ImKalud'
+        document.getElementById("MainButton").textContent = '进入博客'
+        document.getElementById("MainButton").onclick = function () {
+            window.location.href = 'website/home.html'
+        };
+    }
+</script>
 </body>
 
 </html>
