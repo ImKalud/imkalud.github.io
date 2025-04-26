@@ -1,4 +1,4 @@
-fetch('../resource/article/articles.json')
+fetch('../resource/articles.json')
   .then(response => response.json())
   .then(data => {
     const articleListContainer = document.getElementById('article-list');

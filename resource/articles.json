@@ -1,37 +1,42 @@
 [
   {
+    "time": "2025/4/26",
+    "title": "第七个周记",
+    "file": "../resource/articles/article8/article8.md"
+  },
+  {
     "time": "2025/4/20",
     "title": "第六个周记",
-    "file": "../resource/article/articles/article7/article7.md"
+    "file": "../resource/articles/article7/article7.md"
   },
   {
     "time": "2025/4/11",
     "title": "第五个周记",
-    "file": "../resource/article/articles/article6/article6.md"
+    "file": "../resource/articles/article6/article6.md"
   },
   {
     "time": "2025/4/3",
     "title": "第四个周记",
-    "file": "../resource/article/articles/article5/article5.md"
+    "file": "../resource/articles/article5/article5.md"
   },
   {
     "time": "2025/3/28",
     "title": "第三个周记",
-    "file": "../resource/article/articles/article4/article4.md"
+    "file": "../resource/articles/article4/article4.md"
   },
   {
     "time": "2025/3/21",
     "title": "第二个周记",
-    "file": "../resource/article/articles/article3/article3.md"
+    "file": "../resource/articles/article3/article3.md"
   },
   {
     "time": "2025/3/16",
     "title": "第一个周记",
-    "file": "../resource/article/articles/article2/article2.md"
+    "file": "../resource/articles/article2/article2.md"
   },
   {
     "time": "2025/3/15",
     "title": "Hello,World!",
-    "file": "../resource/article/articles/article1/article1.md"
+    "file": "../resource/articles/article1/article1.md"
   }
 ]
