@@ -1,0 +1,15 @@
+[
+    {
+      "lines": ["Are you going to Scarborough Fair?", "Parsley sage rosemary and thyme.","Remember me to one who lives there,","He once was a true love of mine."],
+      "background": "../resource/image/background1.png"
+    },
+    {
+      "lines": ["星空見上げ 私だけのヒカリ教えて,", "あなたはいまどこで 誰といるのでしょう?","大好きなひとが遠い.","遠すぎて泣きたくなるの."],
+      "background": "../resource/image/background2.png"
+    },
+    {
+      "lines": ["花が散ることがない時,", "意味が伝わることがない日,","愛は昔から変わらず,","スミレは永遠に続く."],
+      "background": "../resource/image/background3.png"
+    }
+  ]
+  
