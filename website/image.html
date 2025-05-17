@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日美图</title>
+    <link rel="icon" href="../resource/image/icon.png" sizes="16x16" />
+    <link rel="stylesheet" href="../css/image.css">
+    <script src="../javascript/image.js"></script>
+</head>
+
+<body>
+    <div class="image-container">
+        <img id="imageDisplay" src="" alt="随机图片" onerror="this.onerror=null">
+        <h1 id="pid" style="color: white;"> </h1>
+    </div>
+
+    <button onclick="downloadImage()">下载图片</button>
+    <button id="changeButton" onclick="randomImage()">切换图片</button>
+</body>
+
+</html>

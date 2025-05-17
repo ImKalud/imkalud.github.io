@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #333;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+    border-radius: 3px;
+}
+
+button {
+    margin: 0px 8px 8px 0px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px 10px 10px;
+    font-size: 1rem;
+    background-color: #444;
+    border: 3px solid #444;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 1s, background-color 1s;
+}
+
+button:hover {
+    color: #BBFFEE;
+    background-color: #333;
+    outline: none;
+    transition: background-color 1s, color 1s;
+}
