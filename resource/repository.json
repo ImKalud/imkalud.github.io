@@ -30,10 +30,10 @@
     "link": "https://github.com/PixelSkider/BetterTropical"
   },
   {
-    "title": "待添加...",
-    "language": "待添加...",
-    "description": "待添加...",
-    "link": "待添加..."
+    "title": "ShutdownTool",
+    "language": "Python",
+    "description": "一个远程关机的软件,通过内网穿透然后就可以远程网页关机了,之前和同学联机MC电脑当服务器的时候写的",
+    "link": "https://github.com/ImKalud/ShutdownTool"
   },
   {
     "title": "待添加...",
