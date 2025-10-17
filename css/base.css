@@ -216,3 +216,52 @@ img {
   margin-top: 12px;
   text-align: center;
 }
+
+/* Code block styles */
+pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+pre {
+  background: #f5f5f5;
+  color: #1b1b1b;
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
+  line-height: 1.5;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+code {
+  background: rgba(0,0,0,0.04);
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+/* small copy button in top-right of pre */
+.pre-wrap { position: relative; }
+.pre-wrap .copy-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: rgba(0,0,0,0.06);
+  border: none;
+  color: inherit;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* dark mode variants */
+html.dark pre {
+  background: #0e0e10;
+  color: #e6e6e6;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+html.dark code {
+  background: rgba(255,255,255,0.03);
+}
+

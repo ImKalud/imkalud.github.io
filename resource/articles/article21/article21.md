@@ -22,9 +22,11 @@ https://github.com/cqjjjzr/LCSELocalizationTools/files/9626995/snxutil.zip 这�
 4.之后开始解包游戏本体 打开LCSEPackageUtility项目并且修改变量 如图将keyIndex改为0202之类的 KeySnx先不管 那是解包游戏本体后的事情 然后编译将jar放到上文提到的文件夹下        
 ![alt text](/resource/articles/article21/image-2.png)
 ![alt text](/resource/articles/article21/image-3.png)       
-5.因为作者没有制作图形化界面 所以要用命令行 这是我的命令行 参数的话可以查看github项目的文档 KeySnx为0是为了不影响后续KeySnx值的获取 下图是成功解包后的文件夹 还有些文件没有截图进         
+5.因为作者没有制作图形化界面 所以要用命令行 这是我的命令行 参数的话可以查看github项目的文档 KeySnx为0是为了不影响后续KeySnx值的获取 下图是成功解包后的文件夹 还有些文件没有截图进  
+```js        
 java -jar .\LCSEPackageUtility-rv4.jar --unpack --list lcsebody1.lst --package lcsebody1 -s -d "输出解包文件的路径" --key 02 --key-snx 0        
 pause       
+```
 ![alt text](/resource/articles/article21/image-4.png)       
 6.现在要开始获取KeySnx的值了 也如同KeyIndex值一样 随便打开个snx文件并查看 这里很多03值 说明这个KeySnx值就为03了 然后打开ide在修改变量重新编译 命令行也要把0改成03 这样比较保险      
 ![alt text](/resource/articles/article21/image-5.png)       
@@ -34,7 +36,6 @@ pause
 9.检测文件转换与解包是否成功 下面为部分文件的截图与打开的截图 事以至此就解包成功了 其他的文件我没有尝试 感兴趣的可以看看github的参数列表       
 ![alt text](/resource/articles/article21/image-7.png)       
 ![alt text](/resource/articles/article21/image-8.png)       
-
 ## 汉化过程
 1.找ds随便写了个脚本调用有道翻译的API翻译的 原本想要ai如gork但文本量比较大就挺麻烦的 但不过做的挺烂的 但懒得管了        
 ![alt text](/resource/articles/article21/image-10.png)      
@@ -42,9 +43,12 @@ pause
 ## 开始封包
 1.汉化完后先将汉化好的po文件转换成snx在通过命令行与参数进行封包 第一个路径为汉化完po存放的路径 第二个为转换前snx的文件路径 第三个则为要用工具将po转换后snx的路径        
 ![alt text](/resource/articles/article21/image-9.png)       
-2.进行封包 参数也可以看GitHub上的参数讲解 第一个路径为转换后snx的路径 第二个则是封包后路径存放的位置 在封包后将生成后的文件替换在游戏中原文件位置就行了         
+2.进行封包 参数也可以看GitHub上的参数讲解 第一个路径为转换后snx的路径 第二个则是封包后路径存放的位置 在封包后将生成后的文件替换在游戏中原文件位置就行了        
+```js 
 java -jar .\LCSEPackageUtility-rv4.jar --patch --patch-dir "C:\Users\ImKalud\Desktop\Crack\in" --list lcsebody1.lst --package lcsebody1 -s -d "C:\Users\ImKalud\Desktop\Crack\mid" --key 02 --key-snx 03        
 pause       
+```
+
 3.这时候你完成了一切 迫切的打开了游戏 结果发现了一堆乱码 这时候要开始逆向了。。。       
 ![alt text](/resource/articles/article21/a9c40e3d97688557a095972ae8daa79a.png)      
 

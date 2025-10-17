@@ -71,3 +71,9 @@ a:hover {
 main {
   margin-bottom: 6rem;
 }
+
+
+p {
+  color: var(--text);
+      transition: color 1s, background-color 1s;
+}
