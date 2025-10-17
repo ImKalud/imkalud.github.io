@@ -1,9 +1,3 @@
-/*!
- * Bootstrap v3.4.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under the MIT license
- */
-
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
@@ -16,20 +10,8 @@ if (typeof jQuery === 'undefined') {
   }
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: transition.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#transitions
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // CSS TRANSITION SUPPORT (Shoutout: https://modernizr.com/)
-  // ============================================================
 
   function transitionEnd() {
     var el = document.createElement('bootstrap')
@@ -50,7 +32,6 @@ if (typeof jQuery === 'undefined') {
     return false // explicit for ie8 (  ._.)
   }
 
-  // https://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
     var called = false
     var $el = this
@@ -76,20 +57,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: alert.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#alerts
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // ALERT CLASS DEFINITION
-  // ======================
 
   var dismiss = '[data-dismiss="alert"]'
   var Alert = function (el) {
@@ -125,7 +94,7 @@ if (typeof jQuery === 'undefined') {
     $parent.removeClass('in')
 
     function removeElement() {
-      // detach from parent, fire event then clean up data
+
       $parent.detach().trigger('closed.bs.alert').remove()
     }
 
@@ -135,10 +104,6 @@ if (typeof jQuery === 'undefined') {
         .emulateTransitionEnd(Alert.TRANSITION_DURATION) :
       removeElement()
   }
-
-
-  // ALERT PLUGIN DEFINITION
-  // =======================
 
   function Plugin(option) {
     return this.each(function () {
@@ -155,37 +120,17 @@ if (typeof jQuery === 'undefined') {
   $.fn.alert = Plugin
   $.fn.alert.Constructor = Alert
 
-
-  // ALERT NO CONFLICT
-  // =================
-
   $.fn.alert.noConflict = function () {
     $.fn.alert = old
     return this
   }
 
-
-  // ALERT DATA-API
-  // ==============
-
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: button.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#buttons
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // BUTTON PUBLIC CLASS DEFINITION
-  // ==============================
 
   var Button = function (element, options) {
     this.$element = $(element)
@@ -209,7 +154,6 @@ if (typeof jQuery === 'undefined') {
 
     if (data.resetText == null) $el.data('resetText', $el[val]())
 
-    // push to event loop to allow forms to submit
     setTimeout($.proxy(function () {
       $el[val](data[state] == null ? this.options[state] : data[state])
 
@@ -245,10 +189,6 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-
-  // BUTTON PLUGIN DEFINITION
-  // ========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -267,27 +207,19 @@ if (typeof jQuery === 'undefined') {
   $.fn.button = Plugin
   $.fn.button.Constructor = Button
 
-
-  // BUTTON NO CONFLICT
-  // ==================
-
   $.fn.button.noConflict = function () {
     $.fn.button = old
     return this
   }
-
-
-  // BUTTON DATA-API
-  // ===============
 
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target).closest('.btn')
       Plugin.call($btn, 'toggle')
       if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
-        // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
+
         e.preventDefault()
-        // The target component still receive the focus
+
         if ($btn.is('input,button')) $btn.trigger('focus')
         else $btn.find('input:visible,button:visible').first().trigger('focus')
       }
@@ -298,20 +230,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: carousel.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#carousel
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // CAROUSEL CLASS DEFINITION
-  // =========================
 
   var Carousel = function (element, options) {
     this.$element = $(element)
@@ -471,10 +391,6 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
-
-  // CAROUSEL PLUGIN DEFINITION
-  // ==========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -494,18 +410,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.carousel = Plugin
   $.fn.carousel.Constructor = Carousel
 
-
-  // CAROUSEL NO CONFLICT
-  // ====================
-
   $.fn.carousel.noConflict = function () {
     $.fn.carousel = old
     return this
   }
-
-
-  // CAROUSEL DATA-API
-  // =================
 
   var clickHandler = function (e) {
     var $this = $(this)
@@ -545,21 +453,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: collapse.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#collapse
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-/* jshint latedef: false */
-
 +function ($) {
   'use strict';
-
-  // COLLAPSE PUBLIC CLASS DEFINITION
-  // ================================
 
   var Collapse = function (element, options) {
     this.$element = $(element)
@@ -710,10 +605,6 @@ if (typeof jQuery === 'undefined') {
     return $(document).find(target)
   }
 
-
-  // COLLAPSE PLUGIN DEFINITION
-  // ==========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -731,18 +622,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.collapse = Plugin
   $.fn.collapse.Constructor = Collapse
 
-
-  // COLLAPSE NO CONFLICT
-  // ====================
-
   $.fn.collapse.noConflict = function () {
     $.fn.collapse = old
     return this
   }
-
-
-  // COLLAPSE DATA-API
-  // =================
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
     var $this = $(this)
@@ -758,20 +641,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: dropdown.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#dropdowns
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // DROPDOWN CLASS DEFINITION
-  // =========================
 
   var backdrop = '.dropdown-backdrop'
   var toggle = '[data-toggle="dropdown"]'
@@ -827,7 +698,7 @@ if (typeof jQuery === 'undefined') {
 
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-        // if mobile we use a backdrop because click events don't delegate
+
         $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
@@ -883,10 +754,6 @@ if (typeof jQuery === 'undefined') {
     $items.eq(index).trigger('focus')
   }
 
-
-  // DROPDOWN PLUGIN DEFINITION
-  // ==========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -902,18 +769,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.dropdown = Plugin
   $.fn.dropdown.Constructor = Dropdown
 
-
-  // DROPDOWN NO CONFLICT
-  // ====================
-
   $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old
     return this
   }
-
-
-  // APPLY TO STANDARD DROPDOWN ELEMENTS
-  // ===================================
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
@@ -924,20 +783,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: modal.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#modals
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // MODAL CLASS DEFINITION
-  // ======================
 
   var Modal = function (element, options) {
     this.options = options
@@ -1161,8 +1008,6 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-  // these following methods are used to handle overflowing modals
-
   Modal.prototype.handleUpdate = function () {
     this.adjustDialog()
   }
@@ -1227,10 +1072,6 @@ if (typeof jQuery === 'undefined') {
     return scrollbarWidth
   }
 
-
-  // MODAL PLUGIN DEFINITION
-  // =======================
-
   function Plugin(option, _relatedTarget) {
     return this.each(function () {
       var $this = $(this)
@@ -1248,18 +1089,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.modal = Plugin
   $.fn.modal.Constructor = Modal
 
-
-  // MODAL NO CONFLICT
-  // =================
-
   $.fn.modal.noConflict = function () {
     $.fn.modal = old
     return this
   }
-
-
-  // MODAL DATA-API
-  // ==============
 
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this = $(this)
@@ -1283,15 +1116,6 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: tooltip.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#tooltip
- * Inspired by the original jQuery.tipsy by Jason Frame
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
 +function ($) {
   'use strict';
 
@@ -1311,7 +1135,7 @@ if (typeof jQuery === 'undefined') {
   var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 
   var DefaultWhitelist = {
-    // Global attributes allowed on any supplied element below.
+
     '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
     a: ['target', 'href', 'title', 'rel'],
     area: [],
@@ -1344,18 +1168,8 @@ if (typeof jQuery === 'undefined') {
     ul: []
   }
 
-  /**
-   * A pattern that recognizes a commonly useful subset of URLs that are safe.
-   *
-   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
   var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi
 
-  /**
-   * A pattern that matches safe data URLs. Only matches image, video and audio types.
-   *
-   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
   var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i
 
   function allowedAttribute(attr, allowedAttributeList) {
@@ -1373,7 +1187,6 @@ if (typeof jQuery === 'undefined') {
       return value instanceof RegExp
     })
 
-    // Check if a regular expression validates the attribute.
     for (var i = 0, l = regExp.length; i < l; i++) {
       if (attrName.match(regExp[i])) {
         return true
@@ -1392,7 +1205,6 @@ if (typeof jQuery === 'undefined') {
       return sanitizeFn(unsafeHtml)
     }
 
-    // IE 8 and below don't support createHTMLDocument
     if (!document.implementation || !document.implementation.createHTMLDocument) {
       return unsafeHtml
     }
@@ -1425,9 +1237,6 @@ if (typeof jQuery === 'undefined') {
 
     return createdDocument.body.innerHTML
   }
-
-  // TOOLTIP PUBLIC CLASS DEFINITION
-  // ===============================
 
   var Tooltip = function (element, options) {
     this.type = null
@@ -1681,19 +1490,15 @@ if (typeof jQuery === 'undefined') {
     var width = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
 
-    // manually read margins because getBoundingClientRect includes difference
     var marginTop = parseInt($tip.css('margin-top'), 10)
     var marginLeft = parseInt($tip.css('margin-left'), 10)
 
-    // we must check for NaN for ie 8/9
     if (isNaN(marginTop)) marginTop = 0
     if (isNaN(marginLeft)) marginLeft = 0
 
     offset.top += marginTop
     offset.left += marginLeft
 
-    // $.fn.offset doesn't round pixel values
-    // so we use setOffset directly with our own function B-0
     $.offset.setOffset($tip[0], $.extend({
       using: function (props) {
         $tip.css({
@@ -1705,7 +1510,6 @@ if (typeof jQuery === 'undefined') {
 
     $tip.addClass('in')
 
-    // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
@@ -1800,12 +1604,11 @@ if (typeof jQuery === 'undefined') {
 
     var elRect = el.getBoundingClientRect()
     if (elRect.width == null) {
-      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+
       elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
     }
     var isSvg = window.SVGElement && el instanceof window.SVGElement
-    // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.
-    // See https://github.com/twbs/bootstrap/issues/20280
+
     var elOffset = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset())
     var scroll = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
     var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
@@ -1817,7 +1620,7 @@ if (typeof jQuery === 'undefined') {
     return placement == 'bottom' ? { top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2 } :
       placement == 'top' ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
         placement == 'left' ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+         { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
 
   }
 
@@ -1930,9 +1733,6 @@ if (typeof jQuery === 'undefined') {
     return sanitizeHtml(unsafeHtml, this.options.whiteList, this.options.sanitizeFn)
   }
 
-  // TOOLTIP PLUGIN DEFINITION
-  // =========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -1950,10 +1750,6 @@ if (typeof jQuery === 'undefined') {
   $.fn.tooltip = Plugin
   $.fn.tooltip.Constructor = Tooltip
 
-
-  // TOOLTIP NO CONFLICT
-  // ===================
-
   $.fn.tooltip.noConflict = function () {
     $.fn.tooltip = old
     return this
@@ -1961,20 +1757,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: popover.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#popovers
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // POPOVER PUBLIC CLASS DEFINITION
-  // ===============================
 
   var Popover = function (element, options) {
     this.init('popover', element, options)
@@ -1990,10 +1774,6 @@ if (typeof jQuery === 'undefined') {
     content: '',
     template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
-
-
-  // NOTE: POPOVER EXTENDS tooltip.js
-  // ================================
 
   Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
 
@@ -2030,8 +1810,6 @@ if (typeof jQuery === 'undefined') {
 
     $tip.removeClass('fade top bottom left right in')
 
-    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
-    // this manually by checking the contents.
     if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
   }
 
@@ -2053,10 +1831,6 @@ if (typeof jQuery === 'undefined') {
     return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
   }
 
-
-  // POPOVER PLUGIN DEFINITION
-  // =========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -2074,10 +1848,6 @@ if (typeof jQuery === 'undefined') {
   $.fn.popover = Plugin
   $.fn.popover.Constructor = Popover
 
-
-  // POPOVER NO CONFLICT
-  // ===================
-
   $.fn.popover.noConflict = function () {
     $.fn.popover = old
     return this
@@ -2085,20 +1855,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: scrollspy.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#scrollspy
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // SCROLLSPY CLASS DEFINITION
-  // ==========================
 
   function ScrollSpy(element, options) {
     this.$body = $(document.body)
@@ -2216,10 +1974,6 @@ if (typeof jQuery === 'undefined') {
       .removeClass('active')
   }
 
-
-  // SCROLLSPY PLUGIN DEFINITION
-  // ===========================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -2236,18 +1990,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.scrollspy = Plugin
   $.fn.scrollspy.Constructor = ScrollSpy
 
-
-  // SCROLLSPY NO CONFLICT
-  // =====================
-
   $.fn.scrollspy.noConflict = function () {
     $.fn.scrollspy = old
     return this
   }
-
-
-  // SCROLLSPY DATA-API
-  // ==================
 
   $(window).on('load.bs.scrollspy.data-api', function () {
     $('[data-spy="scroll"]').each(function () {
@@ -2258,25 +2004,13 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: tab.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#tabs
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
 
-  // TAB CLASS DEFINITION
-  // ====================
-
   var Tab = function (element) {
-    // jscs:disable requireDollarBeforejQueryAssignment
+
     this.element = $(element)
-    // jscs:enable requireDollarBeforejQueryAssignment
+
   }
 
   Tab.VERSION = '3.4.1'
@@ -2371,10 +2105,6 @@ if (typeof jQuery === 'undefined') {
     $active.removeClass('in')
   }
 
-
-  // TAB PLUGIN DEFINITION
-  // =====================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -2390,18 +2120,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.tab = Plugin
   $.fn.tab.Constructor = Tab
 
-
-  // TAB NO CONFLICT
-  // ===============
-
   $.fn.tab.noConflict = function () {
     $.fn.tab = old
     return this
   }
-
-
-  // TAB DATA-API
-  // ============
 
   var clickHandler = function (e) {
     e.preventDefault()
@@ -2414,20 +2136,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-/* ========================================================================
- * Bootstrap: affix.js v3.4.1
- * https://getbootstrap.com/docs/3.4/javascript/#affix
- * ========================================================================
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
 +function ($) {
   'use strict';
-
-  // AFFIX CLASS DEFINITION
-  // ======================
 
   var Affix = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
@@ -2530,10 +2240,6 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-
-  // AFFIX PLUGIN DEFINITION
-  // =======================
-
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
@@ -2550,18 +2256,10 @@ if (typeof jQuery === 'undefined') {
   $.fn.affix = Plugin
   $.fn.affix.Constructor = Affix
 
-
-  // AFFIX NO CONFLICT
-  // =================
-
   $.fn.affix.noConflict = function () {
     $.fn.affix = old
     return this
   }
-
-
-  // AFFIX DATA-API
-  // ==============
 
   $(window).on('load', function () {
     $('[data-spy="affix"]').each(function () {

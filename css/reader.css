@@ -1,16 +1,16 @@
 .articleTitle {
-  color: #fff;
+    transition: color 1s, background-color 1s;
   font-size: 2rem;
 }
 
 .articleContent {
-  color: #fff;
+    transition: color 1s, background-color 1s;
   font-size: 1.0rem;
 }
 
 a {
   font-size: 1rem;
-  color: #fff;
+    transition: color 1s, background-color 1s;
   text-decoration: none;
   transition: color 1s, background-color 1s;
 }

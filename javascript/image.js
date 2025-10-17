@@ -5,7 +5,7 @@ function randomImage() {
     const imageElement = document.getElementById('imageDisplay');
     imageElement.src = imageUrls[randomIndex].link;
     const textElement = document.getElementById('pid');
-    textElement.innerText = "Pixiv ID: " + imageUrls[randomIndex].pid; 
+    textElement.innerText = "Pixiv ID: " + imageUrls[randomIndex].pid;
 }
 
 function downloadImage() {

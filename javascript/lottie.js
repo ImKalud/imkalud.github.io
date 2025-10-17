@@ -27,7 +27,7 @@
   };
 
   function createTag(type) {
-    // return {appendChild:function(){},setAttribute:function(){},style:{}}
+
     return document.createElement(type);
   }
 
@@ -56,7 +56,6 @@
     return ProxyFunction;
   }
 
-  // import Howl from '../../3rd_party/howler';
   var audioControllerFactory = function () {
     function AudioController(audioFactory) {
       this.audios = [];
@@ -529,7 +528,7 @@
   };
 
   function createNS(type) {
-    // return {appendChild:function(){},setAttribute:function(){},style:{}}
+
     return document.createElementNS(svgNS, type);
   }
 
@@ -635,19 +634,8 @@
 
                 for (i = 0; i < len; i += 1) {
                   if (chars[i].t === 1) {
-                    // var compData = findComp(chars[i].data.refId, assets);
+
                     chars[i].data.layers = findCompLayers(chars[i].data.refId, assets); // chars[i].data.ip = 0;
-                    // chars[i].data.op = 99999;
-                    // chars[i].data.st = 0;
-                    // chars[i].data.sr = 1;
-                    // chars[i].w = compData.w;
-                    // chars[i].data.ks = {
-                    //   a: { k: [0, 0, 0], a: 0 },
-                    //   p: { k: [0, -compData.h, 0], a: 0 },
-                    //   r: { k: 0, a: 0 },
-                    //   s: { k: [100, 100], a: 0 },
-                    //   o: { k: 100, a: 0 },
-                    // };
 
                     completeLayers(chars[i].data.layers, assets);
                   }
@@ -1134,8 +1122,7 @@
           if (!_workerSelf.assetLoader) {
             _workerSelf.assetLoader = function () {
               function formatResponse(xhr) {
-                // using typeof doubles the time of execution of this method,
-                // so if available, it's better to use the header to validate the type
+
                 var contentTypeHeader = xhr.getResponseHeader('content-type');
 
                 if (contentTypeHeader && xhr.responseType === 'json' && contentTypeHeader.indexOf('json') !== -1) {
@@ -1162,10 +1149,9 @@
                 var xhr = new XMLHttpRequest(); // set responseType after calling open or IE will break.
 
                 try {
-                  // This crashes on Android WebView prior to KitKat
+
                   xhr.responseType = 'json';
                 } catch (err) { } // eslint-disable-line no-empty
-
 
                 xhr.onreadystatechange = function () {
                   if (xhr.readyState === 4) {
@@ -2147,7 +2133,6 @@
 
     var nextValue = this.currentRawFrame + value * this.frameModifier;
     var _isComplete = false; // Checking if nextValue > totalFrames - 1 for addressing non looping and looping animations.
-    // If animation won't loop, it should stop at totalFrames - 1. If it will loop it should complete the last frame and then loop.
 
     if (nextValue >= this.totalFrames - 1 && this.frameModifier > 0) {
       if (!this.loop || this.playCount === this.loop) {
@@ -2169,7 +2154,7 @@
     } else if (nextValue < 0) {
       if (!this.checkSegments(nextValue % this.totalFrames)) {
         if (this.loop && !(this.playCount-- <= 0 && this.loop !== true)) {
-          // eslint-disable-line no-plusplus
+
           this.setCurrentRawFrameValue(this.totalFrames + nextValue % this.totalFrames);
 
           if (!this._completedLoop) {
@@ -2768,18 +2753,8 @@
     return moduleOb;
   }();
 
-  /* eslint-disable */
   var BezierFactory = function () {
-    /**
-       * BezierEasing - use bezier curve for transition easing function
-       * by Gaëtan Renaudeau 2014 - 2015 – MIT License
-       *
-       * Credits: is based on Firefox's nsSMILKeySpline.cpp
-       * Usage:
-       * var spline = BezierEasing([ 0.25, 0.1, 0.25, 1.0 ])
-       * spline.get(x) => returns the easing value | x must be in [0, 1] range
-       *
-       */
+
     var ob = {};
     ob.getBezierEasing = getBezierEasing;
     var beziers = {};
@@ -2795,7 +2770,6 @@
       beziers[str] = bezEasing;
       return bezEasing;
     } // These values are established by empiricism with tests (tradeoff: performance VS precision)
-
 
     var NEWTON_ITERATIONS = 4;
     var NEWTON_MIN_SLOPE = 0.001;
@@ -2817,11 +2791,9 @@
       return 3.0 * aA1;
     } // Returns x(t) given t, x1, and x2, or y(t) given t, y1, and y2.
 
-
     function calcBezier(aT, aA1, aA2) {
       return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT;
     } // Returns dx/dt given t, x1, and x2, or dy/dt given t, y1, and y2.
-
 
     function getSlope(aT, aA1, aA2) {
       return 3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1);
@@ -2856,10 +2828,6 @@
 
       return aGuessT;
     }
-    /**
-       * points is an array of [ mX1, mY1, mX2, mY2 ]
-       */
-
 
     function BezierEasing(points) {
       this._p = points;
@@ -2876,13 +2844,12 @@
           mY2 = this._p[3];
         if (!this._precomputed) this._precompute();
         if (mX1 === mY1 && mX2 === mY2) return x; // linear
-        // Because JavaScript number are imprecise, we should guarantee the extremes are right.
 
         if (x === 0) return 0;
         if (x === 1) return 1;
         return calcBezier(this._getTForX(x), mY1, mY2);
       },
-      // Private part
+
       _precompute: function _precompute() {
         var mX1 = this._p[0],
           mY1 = this._p[1],
@@ -2903,9 +2870,6 @@
         }
       },
 
-      /**
-           * getTForX chose the fastest heuristic to determine the percentage value precisely from a given X projection.
-           */
       _getTForX: function _getTForX(aX) {
         var mX1 = this._p[0],
           mX2 = this._p[2],
@@ -3211,7 +3175,7 @@
         }
 
         if (initPos < 0 || initPos >= len - 1) {
-          // FIX for TypedArrays that don't store floating point values with enough accuracy
+
           if (initPos === len - 1) {
             return percents[initPos];
           }
@@ -3498,7 +3462,6 @@
       caching.lastIndex = iterationIndex;
       return newValue;
     } // based on @Toji's https://github.com/toji/gl-matrix/
-
 
     function slerp(a, b, t) {
       var out = [];
@@ -4099,11 +4062,6 @@
         iterationIndex = 0;
       } else if (frameNum >= kf[kf.length - 1].t - this.offsetTime) {
         keyPropS = kf[kf.length - 1].s ? kf[kf.length - 1].s[0] : kf[kf.length - 2].e[0];
-        /* if(kf[kf.length - 1].s){
-                  keyPropS = kf[kf.length - 1].s[0];
-              }else{
-                  keyPropS = kf[kf.length - 2].e[0];
-              } */
 
         isHold = true;
       } else {
@@ -4180,7 +4138,7 @@
       var lastFrame = this._caching.lastFrame;
 
       if (!(lastFrame !== initFrame && (lastFrame < initTime && frameNum < initTime || lastFrame > endTime && frameNum > endTime))) {
-        /// /
+
         this._caching.lastIndex = lastFrame < frameNum ? this._caching.lastIndex : 0;
         this.interpolateShape(frameNum, this.pv, this._caching); /// /
       }
@@ -4450,9 +4408,6 @@
         convertStarToPath: function convertStarToPath() {
           var numPts = Math.floor(this.pt.v) * 2;
           var angle = Math.PI * 2 / numPts;
-          /* this.v.v.length = numPts;
-                  this.v.i.length = numPts;
-                  this.v.o.length = numPts; */
 
           var longFlag = true;
           var longRad = this.or.v;
@@ -4481,10 +4436,6 @@
             x += +this.p.v[0];
             y += +this.p.v[1];
             this.v.setTripleAt(x, y, x - ox * perimSegment * roundness * dir, y - oy * perimSegment * roundness * dir, x + ox * perimSegment * roundness * dir, y + oy * perimSegment * roundness * dir, i, true);
-            /* this.v.v[i] = [x,y];
-                      this.v.i[i] = [x+ox*perimSegment*roundness*dir,y+oy*perimSegment*roundness*dir];
-                      this.v.o[i] = [x-ox*perimSegment*roundness*dir,y-oy*perimSegment*roundness*dir];
-                      this.v._length = numPts; */
 
             longFlag = !longFlag;
             currentAng += angle * dir;
@@ -4648,35 +4599,6 @@
     return ob;
   }();
 
-  /*!
-   Transformation Matrix v2.0
-   (c) Epistemex 2014-2015
-   www.epistemex.com
-   By Ken Fyrstenberg
-   Contributions by leeoniya.
-   License: MIT, header required.
-   */
-
-  /**
-   * 2D transformation matrix object initialized with identity matrix.
-   *
-   * The matrix can synchronize a canvas context by supplying the context
-   * as an argument, or later apply current absolute transform to an
-   * existing context.
-   *
-   * All values are handled as floating point values.
-   *
-   * @param {CanvasRenderingContext2D} [context] - Optional context to sync with Matrix
-   * @prop {number} a - scale x
-   * @prop {number} b - shear y
-   * @prop {number} c - shear x
-   * @prop {number} d - scale y
-   * @prop {number} e - translate x
-   * @prop {number} f - translate y
-   * @prop {CanvasRenderingContext2D|null} [context=null] - set or get current canvas context
-   * @constructor
-   */
-
   var Matrix = function () {
     var _cos = Math.cos;
     var _sin = Math.sin;
@@ -4813,8 +4735,7 @@
       var _p = this.props;
 
       if (a2 === 1 && b2 === 0 && c2 === 0 && d2 === 0 && e2 === 0 && f2 === 1 && g2 === 0 && h2 === 0 && i2 === 0 && j2 === 0 && k2 === 1 && l2 === 0) {
-        // NOTE: commenting this condition because TurboFan deoptimizes code when present
-        // if(m2 !== 0 || n2 !== 0 || o2 !== 0){
+
         _p[12] = _p[12] * a2 + _p[15] * m2;
         _p[13] = _p[13] * f2 + _p[15] * n2;
         _p[14] = _p[14] * k2 + _p[15] * o2;
@@ -4840,11 +4761,6 @@
       var n1 = _p[13];
       var o1 = _p[14];
       var p1 = _p[15];
-      /* matrix order (canvas compatible):
-           * ace
-           * bdf
-           * 001
-           */
 
       _p[0] = a1 * a2 + b1 * e2 + c1 * i2 + d1 * m2;
       _p[1] = a1 * b2 + b1 * f2 + c1 * j2 + d1 * n2;
@@ -4913,10 +4829,7 @@
         y: x * this.props[1] + y * this.props[5] + z * this.props[9] + this.props[13],
         z: x * this.props[2] + y * this.props[6] + z * this.props[10] + this.props[14]
       };
-      /* return {
-           x: x * me.a + y * me.c + me.e,
-           y: x * me.b + y * me.d + me.f
-           }; */
+
     }
 
     function applyToX(x, y, z) {
@@ -5016,11 +4929,7 @@
     }
 
     function toCSS() {
-      // Doesn't make much sense to add this optimization. If it is an identity matrix, it's very likely this will get called only once since it won't be keyframed.
 
-      /* if(this.isIdentity()) {
-              return '';
-          } */
       var i = 0;
       var props = this.props;
       var cssValue = 'matrix3d(';
@@ -5046,11 +4955,7 @@
     }
 
     function to2dCSS() {
-      // Doesn't make much sense to add this optimization. If it is an identity matrix, it's very likely this will get called only once since it won't be keyframed.
 
-      /* if(this.isIdentity()) {
-              return '';
-          } */
       var props = this.props;
 
       var _a = roundMatrixProperty(props[0]);
@@ -5235,7 +5140,7 @@
       var pair = vars[i].split('=');
 
       if (decodeURIComponent(pair[0]) == variable) {
-        // eslint-disable-line eqeqeq
+
         return decodeURIComponent(pair[1]);
       }
     }
@@ -5293,7 +5198,7 @@
 
   ShapeModifier.prototype.addShape = function (data) {
     if (!this.closed) {
-      // Adding shape to dynamic properties. It covers the case where a shape has no effects applied, to reset it's _mdf state on every tick.
+
       data.sh.container.addDynamicProperty(data.sh);
       var shapeData = {
         shape: data.sh,
@@ -5595,8 +5500,7 @@
       }
     } else if (this._mdf) {
       for (i = 0; i < len; i += 1) {
-        // Releasign Trim Cached paths data when no trim applied in case shapes are modified inbetween.
-        // Don't remove this even if it's losing cached info.
+
         this.shapes[i].pathsData.length = 0;
         this.shapes[i].shape._mdf = true;
       }
@@ -5983,7 +5887,7 @@
     }
 
     function autoOrient() {//
-      // var prevP = this.getValueAtTime();
+
     }
 
     function addDynamicProperty(prop) {
@@ -6415,9 +6319,6 @@
       if (currentV[0] === currentO[0] && currentV[1] === currentO[1] && currentV[0] === currentI[0] && currentV[1] === currentI[1]) {
         if ((i === 0 || i === len - 1) && !path.c) {
           clonedPath.setTripleAt(currentV[0], currentV[1], currentO[0], currentO[1], currentI[0], currentI[1], index);
-          /* clonedPath.v[index] = currentV;
-                  clonedPath.o[index] = currentO;
-                  clonedPath.i[index] = currentI; */
 
           index += 1;
         } else {
@@ -6755,7 +6656,7 @@
 
           for (j = 0; j < loadedSelector.length; j += 1) {
             if (loadedSelector[j].href.indexOf(fontArr[i].fPath) !== -1) {
-              // Font is already loaded
+
               shouldLoadFont = false;
             }
           }
@@ -6774,7 +6675,7 @@
 
           for (j = 0; j < loadedSelector.length; j += 1) {
             if (fontArr[i].fPath === loadedSelector[j].src) {
-              // Font is already loaded
+
               shouldLoadFont = false;
             }
           }
@@ -6797,8 +6698,7 @@
       if (_pendingFonts === 0) {
         this.isLoaded = true;
       } else {
-        // On some cases even if the font is loaded, it won't load correctly when measuring text on canvas.
-        // Adding this timeout seems to fix it
+
         setTimeout(this.checkLoadedFonts.bind(this), 100);
       }
     }
@@ -6945,7 +6845,7 @@
 
   RenderableElement.prototype = {
     initRenderable: function initRenderable() {
-      // layer's visibility related to inpoint and outpoint. Rename isVisible to isInRange
+
       this.isInRange = false; // layer's display state
 
       this.hidden = false; // If layer's transparency equals 0, it can be hidden
@@ -6979,14 +6879,6 @@
       }
     },
 
-    /**
-       * @function
-       * Initializes frame related properties.
-       *
-       * @param {number} num
-       * current frame number in Layer's time
-       *
-       */
     checkLayerLimits: function checkLayerLimits(num) {
       if (this.data.ip - this.data.st <= num && this.data.op - this.data.st > num) {
         if (this.isInRange !== true) {
@@ -7008,8 +6900,6 @@
       for (i = 0; i < len; i += 1) {
         this.renderableComponents[i].renderFrame(this._isFirstFrame);
       }
-      /* this.maskManager.renderFrame(this.finalTransform.mat);
-          this.renderableEffectsManager.renderFrame(this._isFirstFrame); */
 
     },
     sourceRectAtTime: function sourceRectAtTime() {
@@ -7191,7 +7081,6 @@
         return expressionValue;
       };
     } // TODO: try to avoid using this getter
-
 
     function defaultGetter() {
       return defaultUnidimensionalValue;
@@ -7847,9 +7736,6 @@
           case 'Contents':
           case 2:
             return interfaceFunction.content;
-          // Not necessary for now. Keeping them here in case a new case appears
-          // case 'ADBE Vector Transform Group':
-          // case 3:
 
           default:
             return interfaceFunction.transform;
@@ -8423,7 +8309,6 @@
           if (stringValue !== _prevValue) {
             elem.textProperty.currentData.t = _prevValue;
             _sourceText = new String(stringValue); // eslint-disable-line no-new-wrappers
-            // If stringValue is an empty string, eval returns undefined, so it has to be returned as a String primitive
 
             _sourceText.value = stringValue || new String(stringValue); // eslint-disable-line no-new-wrappers
           }
@@ -8556,7 +8441,6 @@
         case 5:
           eff = new EffectsManager(effects[i], element, this);
           break;
-        // case 6:
 
         default:
           eff = new NoValueEffect(effects[i], element, this);
@@ -8625,7 +8509,6 @@
         this.data.sr = 1;
       } // effects manager
 
-
       this.effectsManager = new EffectsManager(this.data, this, this.dynamicProperties);
     },
     getType: function getType() {
@@ -8634,22 +8517,12 @@
     sourceRectAtTime: function sourceRectAtTime() { }
   };
 
-  /**
-   * @file
-   * Handles element's layer frame update.
-   * Checks layer in point and out point
-   *
-   */
   function FrameElement() { }
 
   FrameElement.prototype = {
-    /**
-       * @function
-       * Initializes frame related properties.
-       *
-       */
+
     initFrame: function initFrame() {
-      // set to true when inpoint is rendered
+
       this._isFirstFrame = false; // list of animated properties
 
       this.dynamicProperties = []; // If layer has been modified in current tick this will be true
@@ -8657,16 +8530,6 @@
       this._mdf = false;
     },
 
-    /**
-       * @function
-       * Calculates all dynamic values
-       *
-       * @param {number} num
-       * current frame number in Layer's time
-       * @param {boolean} isVisible
-       * if layers is currently in range
-       *
-       */
     prepareProperties: function prepareProperties(num, isVisible) {
       var i;
       var len = this.dynamicProperties.length;
@@ -9003,7 +8866,7 @@
 
     while (i < len) {
       if (layers[i].ind == parentName) {
-        // eslint-disable-line eqeqeq
+
         if (!elements[i] || elements[i] === true) {
           this.buildItem(i);
           this.addPendingElement(element);
@@ -9098,7 +8961,6 @@
       if (this.data.ao) {
         this.finalTransform.mProp.autoOriented = true;
       } // TODO: check TYPE 11: Guided elements
-
 
       if (this.data.ty !== 11) {// this.createElements();
       }
@@ -9213,7 +9075,7 @@
       path = createNS('path');
 
       if (properties[i].mode === 'n') {
-        // TODO move this to a factory or to a constructor
+
         this.viewData[i] = {
           op: PropertyFactory.getProp(this.element, properties[i].o, 0, 0.01, this.element),
           prop: ShapePropertyFactory.getShapeProp(this.element, properties[i], 3),
@@ -9245,7 +9107,6 @@
           feMorph = null;
           x = null;
         } // TODO move this to a factory or to a constructor
-
 
         this.storedData[i] = {
           elem: path,
@@ -9280,7 +9141,6 @@
         if (properties[i].inv && !this.solidPath) {
           this.solidPath = this.createLayerSolidPath();
         } // TODO move this to a factory or to a constructor
-
 
         this.viewData[i] = {
           elem: path,
@@ -9380,15 +9240,13 @@
     len = pathNodes._length;
 
     for (i = 1; i < len; i += 1) {
-      // pathString += " C"+pathNodes.o[i-1][0]+','+pathNodes.o[i-1][1] + " "+pathNodes.i[i][0]+','+pathNodes.i[i][1] + " "+pathNodes.v[i][0]+','+pathNodes.v[i][1];
+
       pathString += ' C' + pathNodes.o[i - 1][0] + ',' + pathNodes.o[i - 1][1] + ' ' + pathNodes.i[i][0] + ',' + pathNodes.i[i][1] + ' ' + pathNodes.v[i][0] + ',' + pathNodes.v[i][1];
     } // pathString += " C"+pathNodes.o[i-1][0]+','+pathNodes.o[i-1][1] + " "+pathNodes.i[0][0]+','+pathNodes.i[0][1] + " "+pathNodes.v[0][0]+','+pathNodes.v[0][1];
-
 
     if (pathNodes.c && len > 1) {
       pathString += ' C' + pathNodes.o[i - 1][0] + ',' + pathNodes.o[i - 1][1] + ' ' + pathNodes.i[0][0] + ',' + pathNodes.i[0][1] + ' ' + pathNodes.v[0][0] + ',' + pathNodes.v[0][1];
     } // pathNodes.__renderedString = pathString;
-
 
     if (viewData.lastPath !== pathString) {
       var pathShapeValue = '';
@@ -9533,7 +9391,7 @@
 
       if (this.data.td) {
         if (this.data.td == 3 || this.data.td == 1) {
-          // eslint-disable-line eqeqeq
+
           var masker = createNS('mask');
           masker.setAttribute('id', this.layerId);
           masker.setAttribute('mask-type', this.data.td == 3 ? 'luminance' : 'alpha'); // eslint-disable-line eqeqeq
@@ -9543,7 +9401,7 @@
           this.globalData.defs.appendChild(masker); // This is only for IE and Edge when mask if of type alpha
 
           if (!featureSupport.maskType && this.data.td == 1) {
-            // eslint-disable-line eqeqeq
+
             masker.setAttribute('mask-type', 'luminance');
             filId = createElementID();
             fil = filtersFactory.createFilter(filId);
@@ -9556,7 +9414,7 @@
             gg.setAttribute('filter', 'url(' + getLocationHref() + '#' + filId + ')');
           }
         } else if (this.data.td == 2) {
-          // eslint-disable-line eqeqeq
+
           var maskGroup = createNS('mask');
           maskGroup.setAttribute('id', this.layerId);
           maskGroup.setAttribute('mask-type', 'alpha');
@@ -9564,14 +9422,6 @@
           maskGroup.appendChild(maskGrouper);
           filId = createElementID();
           fil = filtersFactory.createFilter(filId); /// /
-          // This solution doesn't work on Android when meta tag with viewport attribute is set
-
-          /* var feColorMatrix = createNS('feColorMatrix');
-                  feColorMatrix.setAttribute('type', 'matrix');
-                  feColorMatrix.setAttribute('color-interpolation-filters', 'sRGB');
-                  feColorMatrix.setAttribute('values','1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 -1 1');
-                  fil.appendChild(feColorMatrix); */
-          /// /
 
           var feCTr = createNS('feComponentTransfer');
           feCTr.setAttribute('in', 'SourceGraphic');
@@ -9621,7 +9471,6 @@
       if (this.data.cl) {
         this.layerElement.setAttribute('class', this.data.cl);
       } // Clipping compositions to hide content that exceeds boundaries. If collapsed transformations is on, component should not be clipped
-
 
       if (this.data.ty === 0 && !this.data.hd) {
         var cp = createNS('clipPath');
@@ -9686,52 +9535,26 @@
     }
   };
 
-  /**
-   * @file
-   * Handles AE's layer parenting property.
-   *
-   */
   function HierarchyElement() { }
 
   HierarchyElement.prototype = {
-    /**
-       * @function
-       * Initializes hierarchy properties
-       *
-       */
+
     initHierarchy: function initHierarchy() {
-      // element's parent list
+
       this.hierarchy = []; // if element is parent of another layer _isParent will be true
 
       this._isParent = false;
       this.checkParenting();
     },
 
-    /**
-       * @function
-       * Sets layer's hierarchy.
-       * @param {array} hierarch
-       * layer's parent list
-       *
-       */
     setHierarchy: function setHierarchy(hierarchy) {
       this.hierarchy = hierarchy;
     },
 
-    /**
-       * @function
-       * Sets layer as parent.
-       *
-       */
     setAsParent: function setAsParent() {
       this._isParent = true;
     },
 
-    /**
-       * @function
-       * Searches layer's parenting chain
-       *
-       */
     checkParenting: function checkParenting() {
       if (this.data.parent !== undefined) {
         this.comp.buildElementParenting(this, this.data.parent, []);
@@ -9756,7 +9579,7 @@
         this.hide();
       },
       hide: function hide() {
-        // console.log('HIDE', this);
+
         if (!this.hidden && (!this.isInRange || this.isTransparent)) {
           var elem = this.baseElement || this.layerElement;
           elem.style.display = 'none';
@@ -9764,7 +9587,7 @@
         }
       },
       show: function show() {
-        // console.log('SHOW', this);
+
         if (this.isInRange && !this.isTransparent) {
           if (!this.data.hd) {
             var elem = this.baseElement || this.layerElement;
@@ -9776,8 +9599,7 @@
         }
       },
       renderFrame: function renderFrame() {
-        // If it is exported as hidden (data.hd === true) no need to render
-        // If it is not visible no need to render
+
         if (this.data.hd || this.hidden) {
           return;
         }
@@ -9878,7 +9700,6 @@
 
       for (i = len - 1; i >= 0; i -= 1) {
         shouldBreakProcess = this.shapeModifiers[i].processShapes(this._isFirstFrame); // workaround to fix cases where a repeater resets the shape so the following processes get called twice
-        // TODO: find a better solution for this
 
         if (shouldBreakProcess) {
           break;
@@ -9939,8 +9760,6 @@
     this.lStr = '';
     this.sh = shape;
     this.lvl = level; // TODO find if there are some cases where _isAnimated can be false.
-    // For now, since shapes add up with other shapes. They have to be calculated every time.
-    // One way of finding out is checking if all styles associated to this shape depend only of this shape
 
     this._isAnimated = !!shape.k; // TODO: commenting this for now since all shapes are animated
 
@@ -10592,7 +10411,7 @@
   }();
 
   function SVGShapeElement(data, globalData, comp) {
-    // List of drawable elements
+
     this.shapes = []; // Full shape data
 
     this.shapesData = data.shapes; // List of styles that will be applied to shapes
@@ -10607,7 +10426,6 @@
 
     this.animatedContents = [];
     this.initElement(data, globalData, comp); // Moving any property that doesn't get too much access after initialization because of v8 way of handling more than 10 properties.
-    // List of elements that have been created
 
     this.prevViewData = []; // Moving any property that doesn't get too much access after initialization because of v8 way of handling more than 10 properties.
   }
@@ -10624,10 +10442,6 @@
     this.searchShapes(this.shapesData, this.itemsData, this.prevViewData, this.layerElement, 0, [], true);
     this.filterUniqueShapes();
   };
-  /*
-  This method searches for multiple shapes that affect a single element and one of them is animated
-  */
-
 
   SVGShapeElement.prototype.filterUniqueShapes = function () {
     var i;
@@ -10669,7 +10483,7 @@
   };
 
   SVGShapeElement.prototype.createStyleElement = function (data, level) {
-    // TODO: prevent drawing of hidden styles
+
     var elementData;
     var styleOb = new SVGStyleData(data, level);
     var pathElement = styleOb.pElem;
@@ -11149,7 +10963,7 @@
     var finalValue = _finalValue || this.data.d.k[this.keysIndex].s;
 
     for (i = 0; i < len; i += 1) {
-      // Checking if index changed to prevent creating a new object every time the expression updates.
+
       if (currentIndex !== this.keysIndex) {
         finalValue = this.effectsSequence[i](finalValue, finalValue.t);
       } else {
@@ -11302,7 +11116,7 @@
             charData = fontManager.getCharData(finalText[i], fontData.fStyle, fontData.fFamily);
             cLength = newLineFlag ? 0 : charData.w * documentData.finalSize / 100;
           } else {
-            // tCanvasHelper.font = documentData.s + 'px '+ fontData.fFamily;
+
             cLength = fontManager.measureText(finalText[i], documentData.f, documentData.finalSize);
           }
 
@@ -11363,11 +11177,9 @@
         charData = fontManager.getCharData(currentChar, fontData.fStyle, fontManager.getFontByName(documentData.f).fFamily);
         cLength = newLineFlag ? 0 : charData.w * documentData.finalSize / 100;
       } else {
-        // var charWidth = fontManager.measureText(val, documentData.f, documentData.finalSize);
-        // tCanvasHelper.font = documentData.finalSize + 'px '+ fontManager.getFontByName(documentData.f).fFamily;
+
         cLength = fontManager.measureText(val, documentData.f, documentData.finalSize);
       } //
-
 
       if (currentChar === ' ') {
         uncollapsedSpaces += cLength + trackingOffset;
@@ -11388,7 +11200,7 @@
       });
 
       if (anchorGrouping == 2) {
-        // eslint-disable-line eqeqeq
+
         currentSize += cLength;
 
         if (val === '' || val === ' ' || i === len - 1) {
@@ -11407,7 +11219,7 @@
           currentSize = 0;
         }
       } else if (anchorGrouping == 3) {
-        // eslint-disable-line eqeqeq
+
         currentSize += cLength;
 
         if (val === '' || i === len - 1) {
@@ -11488,7 +11300,7 @@
         letterData.anIndexes[j] = ind;
 
         if (based == 1 && letterData.val !== '' || based == 2 && letterData.val !== '' && letterData.val !== ' ' || based == 3 && (letterData.n || letterData.val == ' ' || i == len - 1) || based == 4 && (letterData.n || i == len - 1)) {
-          // eslint-disable-line eqeqeq
+
           if (animatorData.s.rn === 1) {
             indexes.push(ind);
           }
@@ -11506,7 +11318,7 @@
           letterData = letters[i];
 
           if (currentInd != letterData.anIndexes[j]) {
-            // eslint-disable-line eqeqeq
+
             currentInd = letterData.anIndexes[j];
             newInd = indexes.splice(Math.floor(Math.random() * indexes.length), 1)[0];
           }
@@ -11659,8 +11471,6 @@
             mult = 0;
           } else {
             var tot = e - s;
-            /* ind += 0.5;
-                      mult = -4/(tot*tot)*(ind*ind)+(4/tot)*ind; */
 
             ind = min(max(0, ind + 0.5 - s), e - s);
             var x = -tot / 2 + ind;
@@ -11689,16 +11499,6 @@
 
           mult = easer(mult);
         } // Smoothness implementation.
-        // The smoothness represents a reduced range of the original [0; 1] range.
-        // if smoothness is 25%, the new range will be [0.375; 0.625]
-        // Steps are:
-        // - find the lower value of the new range (threshold)
-        // - if multiplier is smaller than that value, floor it to 0
-        // - if it is larger,
-        //     - subtract the threshold
-        //     - divide it by the smoothness (this will return the range to [0; 1])
-        // Note: If it doesn't work on some scenarios, consider applying it before the easer.
-
 
         if (this.sm.v !== 100) {
           var smoothness = this.sm.v * 0.01;
@@ -11875,7 +11675,6 @@
           paths = paths.reverse();
         } // TODO: release bezier data cached from previous pathInfo: this._pathData.pi
 
-
         pathInfo = {
           tLength: 0,
           segments: []
@@ -12023,7 +11822,6 @@
         lastIndex += 1;
       }
     } //
-
 
     for (i = 0; i < len; i += 1) {
       matrixHelper.reset();
@@ -12389,7 +12187,7 @@
           matrixHelper.translate(xPos, yPos, 0);
 
           if (documentData.ps) {
-            // matrixHelper.translate(documentData.ps[0],documentData.ps[1],0);
+
             matrixHelper.translate(documentData.ps[0], documentData.ps[1] + documentData.ascent, 0);
           }
 
@@ -12578,10 +12376,7 @@
   };
 
   SVGTextLottieElement.prototype.buildShapeData = function (data, scale) {
-    // data should probably be cloned to apply scale separately to each instance of a text on different layers
-    // but since text internal content gets only rendered once and then it's never rerendered,
-    // it's probably safe not to clone data and reuse always the same instance even if the object is mutated.
-    // Avoiding cloning is preferred since cloning each character shape data is expensive
+
     if (data.shapes && data.shapes.length) {
       var shape = data.shapes[0];
 
@@ -12764,7 +12559,6 @@
           glyphElement.prepareFrame(0);
           glyphElement.renderFrame();
           this.textSpans[i].childSpan.appendChild(glyphElement.layerElement); // when using animated shapes, the layer will be scaled instead of replacing the internal scale
-          // this might have issues with strokes and might need a different solution
 
           if (charData.t === 1) {
             this.textSpans[i].childSpan.setAttribute('transform', 'scale(' + documentData.finalSize / 100 + ',' + documentData.finalSize / 100 + ')');
@@ -12888,8 +12682,6 @@
 
   ISolidElement.prototype.createContent = function () {
     var rect = createNS('rect'); /// /rect.style.width = this.data.sw;
-    /// /rect.style.height = this.data.sh;
-    /// /rect.style.fill = this.data.sc;
 
     rect.setAttribute('width', this.data.sw);
     rect.setAttribute('height', this.data.sh);
@@ -12986,7 +12778,6 @@
     }
 
     this.svgElement.setAttribute('preserveAspectRatio', this.renderConfig.preserveAspectRatio); // this.layerElement.style.transform = 'translate3d(0,0,0)';
-    // this.layerElement.style.transformOrigin = this.layerElement.style.mozTransformOrigin = this.layerElement.style.webkitTransformOrigin = this.layerElement.style['-webkit-transform'] = "0px 0px 0px";
 
     this.animationItem.wrapper.appendChild(this.svgElement); // Mask animation
 
@@ -13094,8 +12885,6 @@
     } else {
       this.renderedFrame = num;
     } // console.log('-------');
-    // console.log('FRAME ',num);
-
 
     this.globalData.frameNum = num;
     this.globalData.frameId += 1;
@@ -13176,18 +12965,6 @@
 
     this.hide();
   };
-  /* ICompElement.prototype.hide = function(){
-      if(!this.hidden){
-          this.hideElement();
-          var i,len = this.elements.length;
-          for( i = 0; i < len; i+=1 ){
-              if(this.elements[i]){
-                  this.elements[i].hide();
-              }
-          }
-      }
-  }; */
-
 
   ICompElement.prototype.prepareFrame = function (num) {
     this._mdf = false;
@@ -13216,7 +12993,6 @@
     if (!this.completeLayers) {
       this.checkLayers(this.renderedFrame);
     } // This iteration needs to be backwards because of how expressions connect between each other
-
 
     for (i = len - 1; i >= 0; i -= 1) {
       if (this.completeLayers || this.elements[i]) {
@@ -13698,7 +13474,7 @@
       styleElem.lj = lineJoinEnum[data.lj || 2];
 
       if (data.lj == 1) {
-        // eslint-disable-line eqeqeq
+
         styleElem.ml = data.ml;
       }
 
@@ -13930,10 +13706,6 @@
     for (i = 0; i < len; i += 1) {
       currentStyle = this.stylesList[i];
       type = currentStyle.type; // Skipping style when
-      // Stroke width equals 0
-      // style should not be rendered (extra unused repeaters)
-      // current opacity equals 0
-      // global opacity equals 0
 
       if (!((type === 'st' || type === 'gs') && currentStyle.wi === 0 || !currentStyle.data._shouldRender || currentStyle.coOp === 0 || this.globalData.currentGlobalAlpha === 0)) {
         renderer.save();
@@ -14556,9 +14328,7 @@
   };
 
   CanvasRendererBase.prototype.ctxOpacity = function (op) {
-    /* if(op === 1){
-          return;
-      } */
+
     if (!this.renderConfig.clearCanvas) {
       this.canvasContext.globalAlpha *= op < 0 ? 0 : op;
       this.globalData.currentGlobalAlpha = this.contextData.cO;
@@ -14748,12 +14518,6 @@
     }
 
     this.transformCanvas.props = [this.transformCanvas.sx, 0, 0, 0, 0, this.transformCanvas.sy, 0, 0, 0, 0, 1, 0, this.transformCanvas.tx, this.transformCanvas.ty, 0, 1];
-    /* var i, len = this.elements.length;
-      for(i=0;i<len;i+=1){
-          if(this.elements[i] && this.elements[i].data.ty === 0){
-              this.elements[i].resize(this.globalData.transformCanvas);
-          }
-      } */
 
     this.ctxTransform(this.transformCanvas.props);
     this.canvasContext.beginPath();
@@ -14793,7 +14557,6 @@
     this.globalData.frameId += 1;
     this.globalData._mdf = !this.renderConfig.clearCanvas || forceRender;
     this.globalData.projectInterface.currentFrame = num; // console.log('--------');
-    // console.log('NEW: ',num);
 
     var i;
     var len = this.layers.length;
@@ -14837,9 +14600,7 @@
     var element = this.createItem(this.layers[pos], this, this.globalData);
     elements[pos] = element;
     element.initExpressions();
-    /* if(this.layers[pos].ty === 0){
-          element.resize(this.globalData.transformCanvas);
-      } */
+
   };
 
   CanvasRendererBase.prototype.checkPendingElements = function () {
@@ -14996,8 +14757,7 @@
       }
     },
     renderFrame: function renderFrame() {
-      // If it is exported as hidden (data.hd === true) no need to render
-      // If it is not visible no need to render
+
       if (this.data.hd || this.hidden) {
         return;
       }
@@ -15061,7 +14821,7 @@
   };
 
   function HShapeElement(data, globalData, comp) {
-    // List of drawable elements
+
     this.shapes = []; // Full shape data
 
     this.shapesData = data.shapes; // List of styles that will be applied to shapes
@@ -15077,7 +14837,6 @@
     this.animatedContents = [];
     this.shapesContainer = createNS('g');
     this.initElement(data, globalData, comp); // Moving any property that doesn't get too much access after initialization because of v8 way of handling more than 10 properties.
-    // List of elements that have been created
 
     this.prevViewData = [];
     this.currentBBox = {
@@ -15182,7 +14941,7 @@
     var bounds = [[p0[0], p3[0]], [p0[1], p3[1]]];
 
     for (var a, b, c, t, b2ac, t1, t2, i = 0; i < 2; ++i) {
-      // eslint-disable-line no-plusplus
+
       b = 6 * p0[i] - 12 * p1[i] + 6 * p2[i];
       a = -3 * p0[i] + 9 * p1[i] - 9 * p2[i] + 3 * p3[i];
       c = 3 * p1[i] - 3 * p0[i];
@@ -15400,7 +15159,6 @@
         tSpan = this.textPaths[cnt] ? this.textPaths[cnt] : createNS('text');
       } // tSpan.setAttribute('visibility', 'hidden');
 
-
       if (this.globalData.fontManager.chars) {
         var charData = this.globalData.fontManager.getCharData(documentData.finalText[i], fontData.fStyle, this.globalData.fontManager.getFontByName(documentData.f).fFamily);
         var shapeData;
@@ -15424,7 +15182,7 @@
           this.innerElem.appendChild(tParent);
 
           if (shapeData && shapeData.shapes) {
-            // document.body.appendChild is needed to get exact measure of shape
+
             document.body.appendChild(tCont);
             var boundingBox = tCont.getBBox();
             tCont.setAttribute('width', boundingBox.width + 2);
@@ -15460,7 +15218,6 @@
         }
       } //
 
-
       if (!this.isMasked) {
         this.textSpans[cnt] = tParent;
       } else {
@@ -15487,7 +15244,7 @@
       }
 
       if (this.isMasked && this.finalTransform._matMdf) {
-        // Todo Benchmark if using this is better than getBBox
+
         this.svgElement.setAttribute('viewBox', -this.finalTransform.mProp.p.v[0] + ' ' + -this.finalTransform.mProp.p.v[1] + ' ' + this.compW + ' ' + this.compH);
         svgStyle = this.svgElement.style;
         var translation = 'translate(' + -this.finalTransform.mProp.p.v[0] + 'px,' + -this.finalTransform.mProp.p.v[1] + 'px)';
@@ -15529,7 +15286,6 @@
             textSpan.setAttribute('transform', renderedLetter.m);
           }
         } /// /textSpan.setAttribute('opacity',renderedLetter.o);
-
 
         textSpan.style.opacity = renderedLetter.o;
 
@@ -15630,7 +15386,7 @@
     var containerStyle;
 
     for (i = 0; i < len; i += 1) {
-      // [perspectiveElem,container]
+
       comp = this.comp.threeDElements[i];
 
       if (comp.type === '3d') {
@@ -16158,7 +15914,6 @@
   HCompElement.prototype.createContainerElements = function () {
     this._createBaseContainerElements(); // divElement.style.clip = 'rect(0px, '+this.data.w+'px, '+this.data.h+'px, 0px)';
 
-
     if (this.data.hasMask) {
       this.svgElement.setAttribute('width', this.data.w);
       this.svgElement.setAttribute('height', this.data.h);
@@ -16283,53 +16038,22 @@
 
   function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
 
-  /* eslint-disable */
-
-  /*
-   Copyright 2014 David Bau.
-
-   Permission is hereby granted, free of charge, to any person obtaining
-   a copy of this software and associated documentation files (the
-   "Software"), to deal in the Software without restriction, including
-   without limitation the rights to use, copy, modify, merge, publish,
-   distribute, sublicense, and/or sell copies of the Software, and to
-   permit persons to whom the Software is furnished to do so, subject to
-   the following conditions:
-
-   The above copyright notice and this permission notice shall be
-   included in all copies or substantial portions of the Software.
-
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-   */
   function seedRandom(pool, math) {
-    //
-    // The following constants are related to IEEE 754 limits.
-    //
+
     var global = this,
       width = 256,
-      // each RC4 output is 0 <= x < 256
+
       chunks = 6,
-      // at least six RC4 outputs for each double
+
       digits = 52,
-      // there are 52 significant digits in a double
+
       rngname = 'random',
-      // rngname: name for Math.random and Math.seedrandom
+
       startdenom = math.pow(width, chunks),
       significance = math.pow(2, digits),
       overflow = significance * 2,
       mask = width - 1,
       nodecrypto; // node.js crypto module, initialized at the bottom.
-    //
-    // seedrandom()
-    // This is the seedrandom function described above.
-    //
 
     function seedrandom(seed, options, callback) {
       var key = [];
@@ -16340,17 +16064,16 @@
       var shortseed = mixkey(flatten(options.entropy ? [seed, tostring(pool)] : seed === null ? autoseed() : seed, 3), key); // Use the seed to initialize an ARC4 generator.
 
       var arc4 = new ARC4(key); // This function returns a random double in [0, 1) that contains
-      // randomness in every bit of the mantissa of the IEEE 754 value.
 
       var prng = function prng() {
         var n = arc4.g(chunks),
-          // Start with a numerator n < 2 ^ 48
+
           d = startdenom,
-          //   and denominator d = 2 ^ 48.
+
           x = 0; //   and no 'extra last byte'.
 
         while (n < significance) {
-          // Fill up all significant digits by
+
           n = (n + x) * width; //   shifting numerator and
 
           d *= width; //   denominator and generating a
@@ -16359,7 +16082,7 @@
         }
 
         while (n >= overflow) {
-          // To avoid rounding up, before adding
+
           n /= 2; //   last byte, shift everything
 
           d /= 2; //   right using integer math until
@@ -16384,38 +16107,26 @@
 
       return (options.pass || callback || function (prng, seed, is_math_call, state) {
         if (state) {
-          // Load the arc4 state from the given state if it has an S array.
+
           if (state.S) {
             copy(state, arc4);
           } // Only provide the .state method if requested via options.state.
-
 
           prng.state = function () {
             return copy(arc4, {});
           };
         } // If called as a method of Math (Math.seedrandom()), mutate
-        // Math.random because that is how seedrandom.js has worked since v1.0.
-
 
         if (is_math_call) {
           math[rngname] = prng;
           return seed;
         } // Otherwise, it is a newer calling convention, so return the
-        // prng directly.
+
         else return prng;
       })(prng, shortseed, 'global' in options ? options.global : this == math, options.state);
     }
 
     math['seed' + rngname] = seedrandom; //
-    // ARC4
-    //
-    // An ARC4 implementation.  The constructor takes a key in the form of
-    // an array of at most (width) integers that should be 0 <= x < (width).
-    //
-    // The g(count) method returns a pseudorandom integer that concatenates
-    // the next (count) outputs from ARC4.  Its return value is a number x
-    // that is in the range 0 <= x < (width ^ count).
-    //
 
     function ARC4(key) {
       var t,
@@ -16429,7 +16140,6 @@
         key = [keylen++];
       } // Set up S using the standard key scheduling algorithm.
 
-
       while (i < width) {
         s[i] = i++;
       }
@@ -16439,9 +16149,8 @@
         s[j] = t;
       } // The "g" method returns the next (count) outputs as one number.
 
-
       me.g = function (count) {
-        // Using instance members instead of closure state nearly doubles speed.
+
         var t,
           r = 0,
           i = me.i,
@@ -16456,14 +16165,9 @@
         me.i = i;
         me.j = j;
         return r; // For robust unpredictability, the function call below automatically
-        // discards an initial batch of values.  This is called RC4-drop[256].
-        // See http://google.com/search?q=rsa+fluhrer+response&btnI
+
       };
     } //
-    // copy()
-    // Copies internal state of ARC4 to or from a plain object.
-    //
-
 
     function copy(f, t) {
       t.i = f.i;
@@ -16471,10 +16175,6 @@
       t.S = f.S.slice();
       return t;
     } //
-    // flatten()
-    // Converts an object tree to nested arrays of strings.
-    //
-
 
     function flatten(obj, depth) {
       var result = [],
@@ -16491,11 +16191,6 @@
 
       return result.length ? result : typ == 'string' ? obj : obj + '\0';
     } //
-    // mixkey()
-    // Mixes a string seed into a key that is an array of integers, and
-    // returns a shortened string seed that is equivalent to the result key.
-    //
-
 
     function mixkey(seed, key) {
       var stringseed = seed + '',
@@ -16508,11 +16203,6 @@
 
       return tostring(key);
     } //
-    // autoseed()
-    // Returns an object for autoseeding, using window.crypto and Node crypto
-    // module if available.
-    //
-
 
     function autoseed() {
       try {
@@ -16529,27 +16219,13 @@
         return [+new Date(), global, plugins, global.screen, tostring(pool)];
       }
     } //
-    // tostring()
-    // Converts an array of charcodes to a string
-    //
-
 
     function tostring(a) {
       return String.fromCharCode.apply(0, a);
     } //
-    // When seedrandom.js is loaded, we immediately mix a few bits
-    // from the built-in RNG into the entropy pool.  Because we do
-    // not want to interfere with deterministic PRNG state later,
-    // seedrandom will not call math.random on its own again after
-    // initialization.
-    //
-
 
     mixkey(math.random(), pool); //
-    // Nodejs and AMD support: export the implementation as a module using
-    // either convention.
-    //
-    // End anonymous scope, and pass initial values.
+
   }
 
   ;
@@ -17089,14 +16765,13 @@
         j = 0;
 
         while (iWiggle < iterations) {
-          // var rnd = BMMath.random();
+
           for (j = 0; j < lenWiggle; j += 1) {
             addedAmps[j] += -amp + amp * 2 * BMMath.random(); // addedAmps[j] += -amp + amp*2*rnd;
           }
 
           iWiggle += 1;
         } // var rnd2 = BMMath.random();
-
 
         var periods = time * freq;
         var perc = periods - Math.floor(periods);
@@ -17105,7 +16780,7 @@
         if (lenWiggle > 1) {
           for (j = 0; j < lenWiggle; j += 1) {
             arr[j] = this.pv[j] + addedAmps[j] + (-amp + amp * 2 * BMMath.random()) * perc; // arr[j] = this.pv[j] + addedAmps[j] + (-amp + amp*2*rnd)*perc;
-            // arr[i] = this.pv[i] + addedAmp + amp1*perc + amp2*(1-perc);
+
           }
 
           return arr;
@@ -17340,7 +17015,7 @@
       var globalData = elem.globalData;
 
       function executeExpression(_value) {
-        // globalData.pushExpression();
+
         value = _value;
 
         if (this.frameExpressionId === elem.globalData.frameId && this.propType !== 'textSelector') {
@@ -17371,9 +17046,7 @@
 
           if (transform) {
             anchorPoint = transform.anchorPoint;
-            /* position = transform.position;
-                      rotation = transform.rotation;
-                      scale = transform.scale; */
+
           }
         }
 
@@ -17403,12 +17076,10 @@
 
         expression_function();
         this.frameExpressionId = elem.globalData.frameId; // TODO: Check if it's possible to return on ShapeInterface the .v value
-        // Changed this to a ternary operation because Rollup failed compiling it correctly
 
         scoped_bm_rt = scoped_bm_rt.propType === propTypes.SHAPE ? scoped_bm_rt.v : scoped_bm_rt;
         return scoped_bm_rt;
       } // Bundlers will see these as dead code and unless we reference them
-
 
       executeExpression.__preventDeadCodeRemoval = [$bm_transform, anchorPoint, time, velocity, inPoint, outPoint, width, height, name, loop_in, loop_out, smooth, toComp, fromCompToSurface, toWorld, fromWorld, mask, position, rotation, scale, thisComp, numKeys, active, wiggle, loopInDuration, loopOutDuration, comp, lookAt, easeOut, easeIn, ease, nearestKey, key, text, textIndex, textTotal, selectorValue, framesToTime, timeToFrames, sourceRectAtTime, substring, substr, posterizeTime, index, globalData];
       return executeExpression;
@@ -17479,9 +17150,7 @@
         var i;
 
         for (i = 0; i < v1.length; i += 1) {
-          // removing frameRate
-          // if needed, don't add it here
-          // velocity[i] = this.elem.globalData.frameRate*((v2[i] - v1[i])/delta);
+
           velocity[i] = (v2[i] - v1[i]) / delta;
         }
       } else {
@@ -17737,7 +17406,6 @@
         };
       } /// /
 
-
       var matrix = this._transformCachingAtTime.v;
       matrix.cloneFromProps(this.pre.props);
 
@@ -17809,8 +17477,6 @@
 
     PropertyFactory.getProp = function (elem, data, type, mult, container) {
       var prop = propertyGetProp(elem, data, type, mult, container); // prop.getVelocityAtTime = getVelocityAtTime;
-      // prop.loopOut = loopOut;
-      // prop.loopIn = loopIn;
 
       if (prop.kf) {
         prop.getValueAtTime = expressionHelpers.getValueAtTime.bind(prop);
@@ -17847,7 +17513,7 @@
     };
 
     function getShapeValueAtTime(frameNum) {
-      // For now this caching object is created only when needed instead of creating it when the shape is initialized.
+
       if (!this._cachingAtTime) {
         this._cachingAtTime = {
           shapeValue: shapePool.clone(this.pv),
@@ -17953,12 +17619,12 @@
         return pt;
       },
       vectorOnPath: function vectorOnPath(perc, time, vectorType) {
-        // perc doesn't use triple equality because it can be a Number object as well as a primitive.
+
         if (perc == 1) {
-          // eslint-disable-line eqeqeq
+
           perc = this.v.c;
         } else if (perc == 0) {
-          // eslint-disable-line eqeqeq
+
           perc = 0.999;
         }
 
@@ -18303,21 +17969,17 @@
       this.feFuncR = this.createFeFunc('feFuncR', feComponentTransfer);
     } // Green
 
-
     if (effectElements[17].p.k || effectElements[17].p.v !== 0 || effectElements[18].p.k || effectElements[18].p.v !== 1 || effectElements[19].p.k || effectElements[19].p.v !== 1 || effectElements[20].p.k || effectElements[20].p.v !== 0 || effectElements[21].p.k || effectElements[21].p.v !== 1) {
       this.feFuncG = this.createFeFunc('feFuncG', feComponentTransfer);
     } // Blue
-
 
     if (effectElements[24].p.k || effectElements[24].p.v !== 0 || effectElements[25].p.k || effectElements[25].p.v !== 1 || effectElements[26].p.k || effectElements[26].p.v !== 1 || effectElements[27].p.k || effectElements[27].p.v !== 0 || effectElements[28].p.k || effectElements[28].p.v !== 1) {
       this.feFuncB = this.createFeFunc('feFuncB', feComponentTransfer);
     } // Alpha
 
-
     if (effectElements[31].p.k || effectElements[31].p.v !== 0 || effectElements[32].p.k || effectElements[32].p.v !== 1 || effectElements[33].p.k || effectElements[33].p.v !== 1 || effectElements[34].p.k || effectElements[34].p.v !== 0 || effectElements[35].p.k || effectElements[35].p.v !== 1) {
       this.feFuncA = this.createFeFunc('feFuncA', feComponentTransfer);
     } // RGB
-
 
     if (this.feFuncR || this.feFuncG || this.feFuncB || this.feFuncA) {
       feComponentTransfer.setAttribute('color-interpolation-filters', 'sRGB');
@@ -18586,7 +18248,7 @@
   };
 
   function SVGGaussianBlurEffect(filter, filterManager, elem, id) {
-    // Outset the filter region by 100% on all sides to accommodate blur expansion.
+
     filter.setAttribute('x', '-100%');
     filter.setAttribute('y', '-100%');
     filter.setAttribute('width', '300%');
@@ -18600,14 +18262,9 @@
 
   SVGGaussianBlurEffect.prototype.renderFrame = function (forceRender) {
     if (forceRender || this.filterManager._mdf) {
-      // Empirical value, matching AE's blur appearance.
+
       var kBlurrinessToSigma = 0.3;
       var sigma = this.filterManager.effectElements[0].p.v * kBlurrinessToSigma; // Dimensions mapping:
-      //
-      //   1 -> horizontal & vertical
-      //   2 -> horizontal only
-      //   3 -> vertical only
-      //
 
       var dimensions = this.filterManager.effectElements[1].p.v;
       var sigmaX = dimensions == 3 ? 0 : sigma; // eslint-disable-line eqeqeq
@@ -18615,9 +18272,6 @@
       var sigmaY = dimensions == 2 ? 0 : sigma; // eslint-disable-line eqeqeq
 
       this.feGaussianBlur.setAttribute('stdDeviation', sigmaX + ' ' + sigmaY); // Repeat edges mapping:
-      //
-      //   0 -> off -> duplicate
-      //   1 -> on  -> wrap
 
       var edgeMode = this.filterManager.effectElements[2].p.v == 1 ? 'wrap' : 'duplicate'; // eslint-disable-line eqeqeq
 

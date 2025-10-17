@@ -2,6 +2,19 @@
 <html lang="zh-CN">
 
 <head>
+        <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch(e) {}
+        })();
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>功能列表</title>
@@ -15,15 +28,13 @@
     <nav>
         <ul>
             <li><a href="home.html">主页</a></li>
+            <button id="theme-toggle" class="theme-toggle" title="切换暗夜模式" aria-pressed="false">☀</button>
         </ul>
     </nav>
 </header>
 
 <main>
     <a class="list" href="newspaper.html">画报收集</a>
-
-    <!----  a class="list" href="image.html">每日美图</a><>!-->
-
 
 </main>
 

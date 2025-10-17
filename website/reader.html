@@ -2,6 +2,19 @@
 <html lang="zh-CN">
 
 <head>
+        <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch(e) {}
+        })();
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章</title>
@@ -16,6 +29,7 @@
     <nav>
         <ul>
             <li><a href="article.html">返回</a></li>
+            <button id="theme-toggle" class="theme-toggle" title="切换暗夜模式" aria-pressed="false">☀</button>
         </ul>
     </nav>
 </header>
@@ -24,16 +38,33 @@
     <div id="title"></div>
     <div id="content"></div>
     <script>
+        // Preprocess markdown: strip YAML front-matter, remove BOM, fix resource paths
+        function preprocessMarkdown(md) {
+            if (!md) return '';
+            // remove BOM
+            md = md.replace(/^\uFEFF/, '');
+            // strip YAML front-matter (--- ... ---) if present
+            md = md.replace(/^---[\s\S]*?---\s*/,'');
+            // convert HTML img src="/resource/..." to relative paths from /website/
+            md = md.replace(/src=\"\/resource\/(.*?)\"/g, 'src="../resource/$1"');
+            // convert markdown image links ![alt](/resource/...) -> ../resource/...
+            md = md.replace(/!\[([^\]]*)\]\((?:\/resource\/)([^)]+)\)/g, function(m, alt, path){
+                return `![${alt}](../resource/${path})`;
+            });
+            return md;
+        }
+
         const currentTitle = localStorage.getItem('currentArticleTitle');
         if (currentTitle) {
             const txtTitle = localStorage.getItem(`article-${currentTitle}-title`);
             const txtTime = localStorage.getItem(`article-${currentTitle}-time`);
-            const txtContent = localStorage.getItem(`article-${currentTitle}-content`);
-            const afterMD = marked.parse(txtContent);
+            const raw = localStorage.getItem(`article-${currentTitle}-content`);
+            const cleaned = preprocessMarkdown(raw);
+            // render with marked using sensible options
+            const afterMD = marked.parse(cleaned || '', { gfm: true, breaks: true });
             const displayTitle = txtTitle || '加载文章标题出错!';
             const displayTime = txtTime || '加载文章日期出错!';
             const displayContent = afterMD || '加载文章内容出错!';
-            const text = `${displayTitle} - ${displayTime}`;
             document.getElementById('title').textContent = displayTitle;
             document.getElementById('content').innerHTML = displayContent;
         } else {
@@ -43,6 +74,8 @@
 
         document.getElementById('title').classList.add('articleTitle');
         document.getElementById('content').classList.add('articleContent');
+        // re-attach lightbox handlers (if script loaded)
+        if (window.__lightbox_attach) try { window.__lightbox_attach(); } catch(e){}
     </script>
 </main>
 
@@ -50,6 +83,8 @@
     <p>&copy; 2025 ImKalud ❤</p>
 </footer>
 <script src="../javascript/article.js"></script>
+<script src="../javascript/darkmode.js"></script>
+<script src="../javascript/lightbox.js"></script>
 </body>
 
 </html>

@@ -1,16 +1,40 @@
+main, .link, main *, .link * {
+  transition: color 1s, background-color 1s;
+}
+:root {
+
+  --bg: #ffffff;
+  --panel-bg: #eee;
+  --text: #000000;
+  --muted: #000000;
+  --accent: #ffafce;
+  --border: #dddddd;
+}
+
+html.dark {
+
+  --bg: #444;
+  --panel-bg: #333;
+  --text: #ffffff;
+  --muted: #ffffff;
+  --accent: #ffafce;
+  --border: #ccc;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #444;
+  background-color: var(--bg);
+  color: var(--text);
+      margin: 0;
+    padding: 0;
+      transition: color 1s, background-color 1s;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--panel-bg);
+  color: var(--text);
   padding: 1rem;
   text-align: center;
+    transition: color 1s, background-color 1s;
 }
 
 nav ul {
@@ -24,7 +48,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -33,30 +57,33 @@ nav ul li a:hover {
 }
 
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--panel-bg);
+  color: var(--muted);
   text-align: center;
   position: fixed;
   width: 100%;
   bottom: 0;
+    transition: color 1s, background-color 1s;
 }
 
 main {
   padding: 0.5rem 2rem 2rem 2rem;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--panel-bg);
+  color: var(--text);
   margin: 30px auto;
   max-width: 50%;
+    transition: color 1s, background-color 1s;
   border-radius: 8px;
 }
 
 .link {
   padding: 0.5rem 2rem 2rem 2rem;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--panel-bg);
+  color: var(--text);
   margin: 30px auto;
   max-width: 50%;
   border-radius: 8px;
+    transition: color 1s, background-color 1s;
 }
 
 ul {
@@ -68,7 +95,7 @@ ul li {
 }
 
 h2 {
-  color: #fff;
+  color: var(--text);
 }
 
 .tin {
@@ -78,15 +105,14 @@ h2 {
 a {
   word-wrap: break-word;
   font-size: 1.0rem;
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   transition: color 1s, background-color 1s;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #BBFFEE;
-  transition: background-color 1s, color 1s;
+  color: var(--accent);
 }
 
 img {
@@ -99,24 +125,37 @@ img {
   align-items: center;
   padding: 10px 15px 10px 10px;
   font-size: 1rem;
-  background-color: #333;
-  border: 3px solid #ccc;
-  color: #fff;
+  background-color: var(--panel-bg);
+  border: 3px solid var(--border);
+  color: var(--text);
   border-radius: 8px;
   cursor: pointer;
-  transition: color 1s, border-color 1s;
+  transition: color 1s, border-color 1s, background-color 1s;
 }
 
 .focus-button:hover {
-  border-color: #BBFFEE;
+  border-color: var(--accent);
   outline: none;
-  transition: border-color 1s, color 1s;
 }
 
 .icon {
   margin: 0px;
   padding: 0px 10px 0px 0px;
   width: 30px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text);
+  transition: background-color 1s, color 1s;
+  font-size: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255,255,255,0.03);
 }
 
 @media (max-width: 800px) {
@@ -131,4 +170,49 @@ img {
   .link {
     max-width: 80%;
   }
+}
+
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+.lb-overlay.open { display: flex; }
+.lb-content {
+  max-width: 95%;
+  max-height: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lb-content img {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  border-radius: 6px;
+}
+.lb-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100000;
+}
+.lb-caption {
+  color: #fff;
+  margin-top: 12px;
+  text-align: center;
 }

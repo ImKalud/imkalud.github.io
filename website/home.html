@@ -2,6 +2,19 @@
 <html lang="zh-CN">
 
 <head>
+        <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch(e) {}
+        })();
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客主页</title>
@@ -17,8 +30,11 @@
             <li><a href="repository.html">代码仓库</a></li>
             <li><a href="review.html">ACG评价</a></li>
             <li><a href="list.html">功能列表</a></li>
+
+            <button id="theme-toggle" class="theme-toggle" title="切换暗夜模式" aria-pressed="false">☀</button>
         </ul>
     </nav>
+
 </header>
 
 <main>
@@ -35,13 +51,10 @@
     <button class="focus-button" onclick="window.open('https://github.com/ImKalud', '_blank');">
         <img class="icon" src="../resource/image/github.png" alt="Icon"/>GitHub
     </button>
-
-
-        </button>
-        <button class="focus-button" onclick="window.open('https://t.me/+7S-M6V0XpaoyYjE1', '_blank');">
+    </button>
+        <button class="focus-button" onclick="window.open('https://t.me/SlattTheWorld', '_blank');">
         <img class="icon" src="../resource/image/logo.png" alt="Icon"/>TG频道
     </button>
-
             </button>
     <button class="focus-button" onclick="window.open('https://qm.qq.com/q/jv9uzEMrsI', '_blank');">
         <img class="icon" src="https://p.qlogo.cn/gh/373706336/373706336/0" alt="Icon"/>二次元交流群
@@ -64,19 +77,19 @@
     </button>
     </button>
         <button class="focus-button" onclick="window.open('https://qm.qq.com/q/yjnMhRanMA', '_blank');">
-        <img class="icon" src="https://p.qlogo.cn/gh/753797103/753797103/0" alt="Icon"/>末日三问手表交流群
+        <img class="icon" src="https://p.qlogo.cn/gh/753797103/753797103/0" alt="Icon"/>末日三问手办交流群
     </button>
         </button>
         <button class="focus-button" onclick="window.open('https://qm.qq.com/q/HPsNosCzaU', '_blank');">
         <img class="icon" src="https://p.qlogo.cn/gh/996177399/996177399/0" alt="Icon"/>末日三问周边交流群
     </button>
-    
 
 </div>
 
 <footer>
     <p>&copy; 2025 ImKalud ❤</p>
 </footer>
+<script src="../javascript/darkmode.js"></script>
 </body>
 
 </html>

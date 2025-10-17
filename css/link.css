@@ -1,4 +1,47 @@
 .link-item {
+  border: 3px solid var(--border);
+  padding: 1rem;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+main {
+  padding: 2rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+p {
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: #ffafce;
+}
+
+main {
+  margin-bottom: 6rem;
+}
+
+html.dark .link-item {
+  border-color: var(--border) !important;
+}
+html.dark p {
+  color: var(--text) !important;
+}
+html.dark a {
+  color: var(--accent) !important;
+}
+html.dark a:hover {
+  color: #ffafce !important;
+}
+.link-item {
   border: 3px solid #ddd;
   padding: 1rem;
   margin-bottom: 15px;
@@ -22,7 +65,7 @@ a {
 }
 
 a:hover {
-  color: #00ffbf;
+  color: #ffafce;
 }
 
 main {
