@@ -1,352 +1,68 @@
 [
-    {
-        "title": "《末日时在做什么？有没有空？可以来拯救吗？》",
-        "rating": "10.0",
-        "review": "入坑神番 珂学永存",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/2508.html"
-    },
-    {
-        "title": "《末日时在做什么？有没有空？可以来拯救吗？》 轻小说",
-        "rating": "10.0",
-        "review": "与番细节上有点不同 但也写的很好",
-        "name": "轻小说文库",
-        "link": "https://www.wenku8.net/novel/2/2065/index.htm"
-    },
-    {
-        "title": "《末日时在做什么？能不能再见一面？》 轻小说",
-        "rating": "10.0",
-        "review": "还在阅读中。。。",
-        "name": "轻小说文库",
-        "link": "https://www.wenku8.net/book/2311.htm"
-    },
-    {
-        "title": "《魔女之旅》",
-        "rating": "8.5",
-        "review": "时间有点久了 也是入坑番",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss34412"
-    },
-    {
-        "title": "《玉子市场》",
-        "rating": "8.8",
-        "review": "很甜画的也很好 恋爱番 (肥鸟还记得)",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss4262"
-    },
-    {
-        "title": "《玉子爱情故事》",
-        "rating": "9.0",
-        "review": "玉子和饼藏在一起了 甜",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss4155"
-    },
-    {
-        "title": "《紫罗兰永恒花园》",
-        "rating": "9.0",
-        "review": "画的也很好 京阿尼牛逼 剧情也很好 (大佐的眼睛还记得)",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss21542"
-    },
-    {
-        "title": "《紫罗兰永恒花园》 剧场版",
-        "rating": "9.3",
-        "review": "圆了大佐的故事 剧情很好和生动",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ep449832"
-    },
-    {
-        "title": "《元气奇事》",
-        "rating": "8.5",
-        "review": "中规中矩 可以当搞笑番 (狂战士是女的!)",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss42299"
-    },
-    {
-        "title": "《轻音少女》 系列",
-        "rating": "9.5",
-        "review": "入坑神番 京阿尼神番 (有轻百合内容喔)",
-        "name": "哔哩哔哩 第一季",
-        "link": "https://www.bilibili.com/bangumi/play/ss1172"
-    },
-    {
-        "title": "《轻音少女》 剧场版",
-        "rating": "9.7",
-        "review": "剧情和制作都很好 京阿尼牛逼",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss1175"
-    },
-    {
-        "title": "《可塑性记忆》",
-        "rating": "9.3",
-        "review": "很甜 有刀 剧情很好 制作有点烂但是经费有限 还是很不错了",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/2394.html"
-    },
-    {
-        "title": "《四月是你的谎言》",
-        "rating": "9.0",
-        "review": "剧情很好 有点ntr... 画风我不是很喜欢 结局有刀",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss1699"
-    },
-    {
-        "title": "《魔法禁书目录》 系列",
-        "rating": "8.7",
-        "review": "前面看的懂 后面很蒙 没有去看小说和大佬科普",
-        "name": "哔哩哔哩 第一季",
-        "link": "https://www.bilibili.com/bangumi/play/ss963"
-    },
-    {
-        "title": "《某科学的电磁炮》 系列",
-        "rating": "9.0",
-        "review": "外传要打败主传的番 质量剧情不错 嗑琴黑 (有轻百合内容,好康)",
-        "name": "哔哩哔哩 第一季",
-        "link": "https://www.bilibili.com/bangumi/play/ss425"
-    },
-    {
-        "title": "《某科学的一方通行》",
-        "rating": "7.7",
-        "review": "小失望 要是是和小美琴的日常可以更好的",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss28002"
-    },
-    {
-        "title": "《ATRI》",
-        "rating": "9.0",
-        "review": "GAL改番第一次看 剧情和画的差异挺大的 不过还行 看的还是挺爽的",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss48029"
-    },
-    {
-        "title": "《柑橘味香气》",
-        "rating": "9.3",
-        "review": "雷中有甜 甜中有雷 结局很甜 百合番 爽",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/2568.html"
-    },
-    {
-        "title": "《终将成为你》",
-        "rating": "9.6",
-        "review": "设定有点像柑橘 但是没那么压抑 雷挺少 百合番 爽",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/1657.html"
-    },
-    {
-        "title": "《紧扣的星星》",
-        "rating": "8.7",
-        "review": "有牛 但是开头和结尾都很好 百合番 爽",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/244.html"
-    },
-    {
-        "title": "《凉宫春日的抑郁 2006》",
-        "rating": "9.5",
-        "review": "这应该是我第一次看倒序 很牛",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss1056"
-    },
-    {
-        "title": "《凉宫春日的抑郁 2009》",
-        "rating": "9.3",
-        "review": "添加的剧情有点少 可以跳着来看 对2006的剧情做了些补充 也有自己添加的",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss1057"
-    },
-    {
-        "title": "《凉宫春日的消失》",
-        "rating": "9.7",
-        "review": "这剧情是真牛逼 不知道以后会不会看轻小说 R.I.P",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss2809"
-    },
-    {
-        "title": "《长门有希酱的消失》",
-        "rating": "9.3",
-        "review": "画风差别有点大 但后面就习惯了 制作和剧情也是挺不错的",
-        "name": "哔哩哔哩",
-        "link": "https://www.bilibili.com/bangumi/play/ss1558"
-    },
-    {
-        "title": "《可塑性记忆》GAL",
-        "rating": "9.4",
-        "review": "入坑GAL 有点像高清重制版 新添了两种结局还有甜蜜的日常生活 但玩起来有点绕",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《少女领域》GAL",
-        "rating": "10.0",
-        "review": "入坑GAL 有南梁 剧情党 剧情很甜蜜 适合新人",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《真爱百合》GAL",
-        "rating": "9.6",
-        "review": "有血腥内容 谨慎游玩 好结局挺不错的 过程也很甜蜜",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《茸雪》GAL",
-        "rating": "9.0",
-        "review": "国产GAL 内容比较高大上 不玩完看不懂 无黄 制作还行",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《Re LieF》GAL",
-        "rating": "8.0",
-        "review": "剧情前面看的懂 后面很绕 打通了一个路线就不想玩了 制作还行 但**的地方画的很差 (我是剧情党)",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《ATRI》GAL",
-        "rating": "9.6",
-        "review": "制作和剧情都很好 BGM也很沉浸 有刀 剧情一波三折 结尾不错 萝卜子~",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《千恋万花》GAL",
-        "rating": "9.4",
-        "review": "虽然是废萌 但剧情前面也是挺有趣的 芦花姐yyds",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《死馆》GAL",
-        "rating": "9.5",
-        "review": "前部分血腥 后半部分血腥带着剧情 剧情还是不错的",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《要来点百合吗》GAL",
-        "rating": "9.0",
-        "review": "有点短了 后面可以加点日常生活内容的 不过整体还是不错的",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《梦末》GAL",
-        "rating": "9.3",
-        "review": "剧情短小精悍 挺不错的",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《昙花》GAL",
-        "rating": "9.5",
-        "review": "质量剧情都很牛 十几块真的是物超所值",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《饿殍千里》GAL",
-        "rating": "9.4",
-        "review": "很好的一个国产Gal 剧情也很有意思",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《GINKA》GAL",
-        "rating": "9.3",
-        "review": "因为画师和亚托利是同个 我倒是觉得挺好看的 剧情的话有人说老套 我觉得还行可能是我玩的比较少",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《死馆2》GAL",
-        "rating": "9.2",
-        "review": "剧情 画工和配音我都很喜欢!很有意思 还有百合内容 女骑士和女魔王究竟会发生什么事情呢？？？",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《沙耶之歌》 GAL",
-        "rating": "9.4",
-        "review": "剧情是有点纯爱的 然后画风就猎奇 这个猎奇我没见过 有点意思",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《无限恋奸》GAL",
-        "rating": "10.0",
-        "review": "神作只能说 详细评价可以看我qq动态",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《虫爱少女》GAL",
-        "rating": "10.0",
-        "review": "神作只能说 详细评价可以看我qq动态",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《魔女的夜宴》GAL",
-        "rating": "9.2",
-        "review": "画与剧情都还行 剧情有点无聊 然后紬太可爱了",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《虫爱少女 虫使篇》GAL",
-        "rating": "8.8",
-        "review": "稍微有点意思 剧情就经典和泉的样式 然后画的还行",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《虫爱少女 AGEHA》GAL",
-        "rating": "8.5",
-        "review": "单纯猎奇 没啥剧情",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《虫爱少女 末路の果》GAL",
-        "rating": "8.5",
-        "review": "单纯猎奇 没啥剧情",
-        "name": "不传",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "《博人传》",
-        "rating": "????",
-        "review": "不作评价 看了点后们没看了",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/2539.html"
-    },
-    {
-        "title": "《火影忍者》",
-        "rating": "????",
-        "review": "小学时候天天看 挺牛逼的 但是忘记很多了 不做评价",
-        "name": "樱花动漫",
-        "link": "https://yinghua.us/show/5121.html"
-    },
-    {
-        "title": "待添加",
-        "rating": "0.0",
-        "review": "待添加",
-        "name": "待添加",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "待添加",
-        "rating": "0.0",
-        "review": "待添加",
-        "name": "待添加",
-        "link": "https://imkalud.github.io/"
-    },
-    {
-        "title": "待添加",
-        "rating": "0.0",
-        "review": "待添加",
-        "name": "待添加",
-        "link": "https://imkalud.github.io/"
-    }
+    {"title": "虫爱少女 gal"},
+    {"title": "死馆1 gal"},
+    {"title": "死馆2 gal"},
+    {"title": "真爱百合 gal"},
+    {"title": "GINKA gal"},
+    {"title": "ATRI gal"},
+    {"title": "无限炼奸ERE gal"},
+    {"title": "沙耶之歌 gal"},
+    {"title": "少女领域 gal"},
+    {"title": "昙花 gal"},
+    {"title": "梦末 gal"},
+    {"title": "茸雪 gal"},
+    {"title": "饿殍：明末千里行 gal"},
+    {"title": "要来点百合吗 gal"},
+    {"title": "虫爱少女 虫使篇 gal"},
+    {"title": "虫爱少女 AGEHA gal"},
+    {"title": "虫爱少女 末路の果 gal"},
+    {"title": "关于我被小学女生绑架这件事 gal"},
+    {"title": "虫爱少女 莲与阿虫的一日 gal"},
+    {"title": "虫爱少女 淫虫猎域 gal"},
+    {"title": "这里没有格林达姆 gal"},
+    {"title": "虫爱少女 虫狂篇 gal"},
+    {"title": "花吻在上 9花瓣 gal"},
+    {"title": "幻梦 gal"},
+    {"title": "ReMyDearSister gal"},
+    {"title": "苍空的彼端 gal"},
+    {"title": "可塑性记忆 gal"},
+    {"title": "ReLieF gal"},
+    {"title": "千恋万花 gal"},
+    {"title": "魔女的夜宴 gal"},
+    {"title": "机械恋心 gal"},
+    {"title": "魔女之旅 anime"},
+    {"title": "玉子市场 anime"},
+    {"title": "玉子爱情故事 anime"},
+    {"title": "紫罗兰永恒花园 anime"},
+    {"title": "元气奇事 anime"},
+    {"title": "轻音少女 第一季 anime"},
+    {"title": "轻音少女 第二季 anime"},
+    {"title": "轻音少女 剧情版 anime"},
+    {"title": "四月是你的谎言 anime"},
+    {"title": "某科学的超电磁炮 anime"},
+    {"title": "某科学的超电磁炮S anime"},
+    {"title": "某科学的超电磁炮T anime"},
+    {"title": "魔法禁书目录 第一季 anime"},
+    {"title": "魔法禁书目录 第二季 anime"},
+    {"title": "魔法禁书目录 第三季 anime"},
+    {"title": "魔法禁书目录 炭 anime"},
+    {"title": "魔法禁书目录 剧场版 anime"},
+    {"title": "魔法禁书目录炭 剧场版 SP anime"},
+    {"title": "某科学的一方通行 anime"},
+    {"title": "终将成为你 anime"},
+    {"title": "幸运星 anime"},
+    {"title": "凉宫春日的忧郁 2006 anime"},
+    {"title": "凉宫春日的忧郁 2009 anime"},
+    {"title": "凉宫春日的消失 anime"},
+    {"title": "长门有希酱的消失 anime"},
+    {"title": "长门有希酱的消失 OAD anime"},
+    {"title": "紫罗兰永恒花园 剧场版 anime"},
+    {"title": "紫罗兰永恒花园 外传 anime"},
+    {"title": "小凉宫春日的忧郁 anime"},
+    {"title": "鹤屋和熏干酪 anime"},
+    {"title": "末日时在做什么？有没有空？可以来拯救吗？ anime"},
+    {"title": "可塑性记忆 anime"},
+    {"title": "柑橘味香气 anime"},
+    {"title": "ATRI -My Dear Moments- anime"},
+    {"title": "紧扣的星星 anime"}
 ]
