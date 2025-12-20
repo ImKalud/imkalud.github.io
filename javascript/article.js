@@ -1,24 +1,28 @@
-fetch('../resource/articles.json')
-  .then(response => response.json())
-  .then(data => {
-    const articleListContainer = document.getElementById('article-list');
-    data.forEach(item => {
-      const articleDiv = document.createElement('div');
-      articleDiv.classList.add('article');
-      const articleLink = document.createElement('a');
-      articleLink.href = '#';
-      articleLink.textContent = item.title;
-      articleLink.addEventListener('click', () => {
-        localStorage.setItem(`currentArticleTitle`, item.title);
-        localStorage.setItem(`article-${item.title}-title`, item.title);
-        localStorage.setItem(`article-${item.title}-time`, item.time);
-        loadArticle(item.file, item.title);
-      });
-      articleDiv.appendChild(articleLink);
-      articleListContainer.appendChild(articleDiv);
+(async function() {
+  try {
+    const resp = await fetch('../resource/articles.json');
+    if (!resp.ok) throw new Error('无法读取文章列表');
+    const data = await resp.json();
+    const container = document.getElementById('article-list');
+    if (!container) return;
+    // render list
+    data.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'article';
+
+      const link = document.createElement('a');
+      link.className = 'article-link';
+      link.href = `../website/reader.html?id=${idx + 1}`;
+      link.textContent = item.title || '未命名文章';
+      link.setAttribute('aria-label', `打开文章 ${item.title || ''}`);
+
+      card.appendChild(link);
+      container.appendChild(card);
     });
-  })
-  .catch(error => console.error('加载文件列表失败', error));
+  } catch (e) {
+    console.error('加载文件列表失败', e);
+  }
+})();
 
 async function loadArticle(file, title) {
   try {

@@ -35,47 +35,65 @@
 </header>
 
 <main>
-    <div id="title"></div>
+    <div id="article-header">
+        <h1 id="title"></h1>
+        <div id="meta"></div>
+    </div>
     <div id="content"></div>
     <script>
         // Preprocess markdown: strip YAML front-matter, remove BOM, fix resource paths
         function preprocessMarkdown(md) {
             if (!md) return '';
-            // remove BOM
             md = md.replace(/^\uFEFF/, '');
-            // strip YAML front-matter (--- ... ---) if present
             md = md.replace(/^---[\s\S]*?---\s*/,'');
-            // convert HTML img src="/resource/..." to relative paths from /website/
             md = md.replace(/src=\"\/resource\/(.*?)\"/g, 'src="../resource/$1"');
-            // convert markdown image links ![alt](/resource/...) -> ../resource/...
             md = md.replace(/!\[([^\]]*)\]\((?:\/resource\/)([^)]+)\)/g, function(m, alt, path){
                 return `![${alt}](../resource/${path})`;
             });
             return md;
         }
 
-        const currentTitle = localStorage.getItem('currentArticleTitle');
-        if (currentTitle) {
-            const txtTitle = localStorage.getItem(`article-${currentTitle}-title`);
-            const txtTime = localStorage.getItem(`article-${currentTitle}-time`);
-            const raw = localStorage.getItem(`article-${currentTitle}-content`);
-            const cleaned = preprocessMarkdown(raw);
-            // render with marked using sensible options
-            const afterMD = marked.parse(cleaned || '', { gfm: true, breaks: true });
-            const displayTitle = txtTitle || '加载文章标题出错!';
-            const displayTime = txtTime || '加载文章日期出错!';
-            const displayContent = afterMD || '加载文章内容出错!';
-            document.getElementById('title').textContent = displayTitle;
-            document.getElementById('content').innerHTML = displayContent;
-        } else {
-            document.getElementById('title').textContent = '没有找到该文章';
-            document.getElementById('content').textContent = '文章内容加载失败';
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
         }
 
-        document.getElementById('title').classList.add('articleTitle');
-        document.getElementById('content').classList.add('articleContent');
-        // re-attach lightbox handlers (if script loaded)
-        if (window.__lightbox_attach) try { window.__lightbox_attach(); } catch(e){}
+        async function loadArticleById(id) {
+            try {
+                const listResp = await fetch('../resource/articles.json');
+                if (!listResp.ok) throw new Error('无法读取文章列表');
+                const list = await listResp.json();
+                const idx = Number(id) - 1;
+                if (!Number.isFinite(idx) || idx < 0 || idx >= list.length) {
+                    document.getElementById('title').textContent = '无效的文章 ID';
+                    document.getElementById('content').textContent = '';
+                    return;
+                }
+                const item = list[idx];
+                document.getElementById('title').textContent = item.title || '未命名文章';
+                document.getElementById('meta').textContent = item.time || '';
+                const mdResp = await fetch(item.file);
+                if (!mdResp.ok) throw new Error('无法读取文章内容');
+                const mdText = await mdResp.text();
+                const cleaned = preprocessMarkdown(mdText);
+                const html = marked.parse(cleaned || '', { gfm: true, breaks: true });
+                document.getElementById('content').innerHTML = html;
+                document.getElementById('title').classList.add('articleTitle');
+                document.getElementById('content').classList.add('articleContent');
+                if (window.__lightbox_attach) try { window.__lightbox_attach(); } catch(e){}
+            } catch (e) {
+                console.error(e);
+                document.getElementById('title').textContent = '加载文章失败';
+                document.getElementById('content').textContent = e.message || '';
+            }
+        }
+
+        const id = getQueryParam('id');
+        if (id) {
+            loadArticleById(id);
+        } else {
+            document.getElementById('title').textContent = '未指定文章 ID';
+        }
     </script>
 </main>
 
